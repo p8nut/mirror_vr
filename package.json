@@ -1,0 +1,15 @@
+{
+  "name": "mirror_vr",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "openvr": "git+https://github.com/p8nut/node-openvr.git",
+    "ws": "^6.0.0"
+  }
+}
