@@ -71,13 +71,14 @@ const interval = setInterval(function updateClientsPosition() {
 		//console.error('INVALID DEVICE');
 		break;
 	    case openvr.ETrackedDeviceClass.HMD:
-		//console.log('HMD');
+		console.log('HMD');
 	    // 	break;
 	    // case openvr.ETrackedDeviceClass.Controller:
 	    // 	console.log('CONTROLLER');
 		//console.log(poses[i])
 		let quat = convert_to_quaternion(poses[i].deviceToAbsoluteTracking)
 		let msg = JSON.stringify(quat)
+		console.log(msg)
 		wss.clients.forEach(function each(ws) {
 		    if (ws.readyState == ws.OPEN)
 			ws.send(msg);
