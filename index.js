@@ -1,8 +1,11 @@
 const express = require('express')
 const app = express()
 
-app.get('/', (req, res) => res.redirect('/index.html'))
-app.use(express.static('static'))
+app.get('/', (req, res) => res.redirect('/index.html'));
+app.use(express.static('static'));
+
+app.use('/three', express.static('node_modules/three'));
+
 const server = app.listen(9090)
 
 const openvr = require("openvr");
@@ -65,17 +68,16 @@ wss.on('error', function(event){
 const interval = setInterval(function updateClientsPosition() {
     let poses = vr.GetDeviceToAbsoluteTrackingPose(openvr.ETrackingUniverseOrigin.Standing, 0)
     for (let i = 0; i < openvr.k_unMaxTrackedDeviceCount; ++i) {
-	if (poses[i] !== undefined) {
+	if (poses[i] !== undefined && poses[i].poseIsValid === true) {
 	    switch (vr.GetTrackedDeviceClass(i)) {
 	    case openvr.ETrackedDeviceClass.Invalid:
-		//console.error('INVALID DEVICE');
+		console.error('INVALID DEVICE');
 		break;
 	    case openvr.ETrackedDeviceClass.HMD:
 		console.log('HMD');
-	    // 	break;
-	    // case openvr.ETrackedDeviceClass.Controller:
-	    // 	console.log('CONTROLLER');
-		//console.log(poses[i])
+	    	break;
+	    case openvr.ETrackedDeviceClass.Controller:
+		console.log('CONTROLLER');
 		let quat = convert_to_quaternion(poses[i].deviceToAbsoluteTracking)
 		let msg = JSON.stringify(quat)
 		console.log(msg)
@@ -84,15 +86,15 @@ const interval = setInterval(function updateClientsPosition() {
 			ws.send(msg);
 		})
 		return;
-		    //break;
+		break;
 	    case openvr.ETrackedDeviceClass.GenericTracker:
-		//console.log('GENERIC TRACKER');
+		console.log('GENERIC TRACKER');
 		break;
 	    case openvr.ETrackedDeviceClass.TrackingReference:
-		//console.log('TRACKING REFERENCE');		
+		console.log('TRACKING REFERENCE');		
 		break;
 	    case openvr.ETrackedDeviceClass.DisplayRedirect:
-		//console.log('DISPLAY REDIRECT');
+		console.log('DISPLAY REDIRECT');
 		break;
 	    default:
 		console.error("ERROR UNKNOWN DEVICE")
