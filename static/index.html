@@ -1,12 +1,22 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="UTF-8">
-    <title>MirrorVR</title>
-    <link rel="stylesheet" type="text/css" href="css/mirrorvr.css">
-  </head>
-  <body>
-    <script src='three/build/three.js'></script>
-    <script src='js/mirrorvr.js'></script>
-  </body>
+<html >
+	<head>
+		<meta charset="UTF-8">
+		<title>Three.js template</title> 		
+		<link rel="stylesheet" href="css/style.css"> 
+	</head>
+
+	<body>
+		<canvas id="canvas"></canvas>
+		
+		<script src="modules/three/build/three.min.js"></script>
+		
+		<script src="js/sceneSubjects/BasicEntity.js"></script>
+		<script src="js/sceneSubjects/CameraOpenVR.js"></script>
+		<script src="js/sceneSubjects/Planet.js"></script>
+		<script src="js/sceneSubjects/Building.js"></script>
+		
+		<script src="js/SceneManager.js"></script>    
+		<script src="js/main.js"></script>
+	</body>
 </html>

@@ -4,9 +4,9 @@ const app = express()
 app.get('/', (req, res) => res.redirect('/index.html'));
 app.use(express.static('static'));
 
-app.use('/three', express.static('node_modules/three'));
+app.use('/modules', express.static('node_modules'));
 
-const server = app.listen(9090)
+const server = app.listen(8080)
 
 const openvr = require("openvr");
 openvr.k_unMaxTrackedDeviceCount = 64;
@@ -35,7 +35,7 @@ function convert_to_quaternion(_pose_mat) {
 
 const WebSocket = require('ws');
 
-const wss = new WebSocket.Server({ port: 8080 });
+const wss = new WebSocket.Server({ port: 9090 });
 
 wss.on('connection', function connection(ws) {
     console.log("SRV connection");
