@@ -11,6 +11,7 @@
   "dependencies": {
     "express": "^4.16.3",
     "openvr": "git+https://github.com/p8nut/node-openvr.git",
+    "screenfull": "^3.3.3",
     "three": "^0.97.0",
     "ws": "^6.0.0"
   }
