@@ -18,7 +18,7 @@ class HUD {
 	var scene = this.scene = new THREE.Scene();
 	scene.add(new THREE.AmbientLight(0xFFFFFF, 1));
 	scene.add(camera)
-
+/*
 	var big  = this.big = new THREE.Mesh(
 	    new THREE.BoxGeometry(100, 100, 1),
 	    new THREE.MeshBasicMaterial({color: 0xFF7F50})
@@ -38,6 +38,7 @@ class HUD {
 	sml.position.set(50,250,-1);
 	scene.add(sml);
 	// add button and stuff.
+	*/
     }
 
     resize() {
@@ -81,7 +82,7 @@ class HUD {
 
 	this.raycaster.setFromCamera(point, camera);
 	var intersects = this.raycaster.intersectObjects(this.scene.children, true);
-
+/*
 	for (let i = 0; i < intersects.length; i++) {
 	    let intersect = intersects[i]
 	    if (intersect.object === this.sml) {
@@ -95,6 +96,7 @@ class HUD {
 	    }
 	}
 	console.log(this.game_scene.scale)
+	*/
 	return intersects.length > 0;
     }
 }

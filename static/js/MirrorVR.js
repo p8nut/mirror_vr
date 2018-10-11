@@ -16,6 +16,7 @@ class MirrorVR{
 
 	//////////////// BEGIN HUD /////////////////
 	const hud = this.hud = new HUD(canvas, univers);
+	const ihm = this.ihm = new IHM(univers);
 	//////////////// END HUD ///////////////////	
     }
 
@@ -24,6 +25,7 @@ class MirrorVR{
 	
 	this.univers.update(elapsedTime);
 	this.hud.update(elapsedTime);
+	this.ihm.update(elapsedTime);
 
 	this.renderer.clear()
 	this.univers.render(this.renderer);

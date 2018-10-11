@@ -5,6 +5,7 @@ class Renderer{
 								   antialias: true,
 								   alpha: true,
 								 });
+	this.renderer.context.getShaderInfoLog = function () { return '' };
 	const DPR = (window.devicePixelRatio) ? window.devicePixelRatio : 1;
 	renderer.setPixelRatio(DPR);
 	renderer.setSize(canvas.width, canvas.height);
