@@ -44,7 +44,7 @@ class IHM {
       handle_fullscreen: function() {
 	screenfull.toggle();
 	if (screen.orientation)
-	  screen.orientation.lock("landscape-primary");    
+	  Promise.all([screen.orientation.lock("landscape-primary")]);
       },
       zoom: 0
     });
