@@ -11,8 +11,8 @@ class World {
 
 	const controller = this.controller = new THREE.Group();
 	const camera = this.camera = new THREE.PerspectiveCamera(fieldOfView, aspectRatio, nearPlane, farPlane);
-	camera.rotation.x = -Math.PI / 2;
 	controller.add(camera);
+	camera.rotation.x = -Math.PI / 2;
 	scene.add(controller);
     }
     

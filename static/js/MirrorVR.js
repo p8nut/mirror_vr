@@ -48,11 +48,12 @@ class MirrorVR{
         // var distance = 400000;
 	 sun.position.x = 80000
 
-	univers.add( sun );
+	univers.add(sun);
 	//////////////// END SUN ///////////////////
 
 	
 	controller.position.set(0,0,3);
+	// this lookAt must be reset by main when camera is update by controller.
 	camera.lookAt(this.planet.position);
 	
     }

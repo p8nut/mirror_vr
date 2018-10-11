@@ -5,7 +5,7 @@ class Planet extends BasicEntity {
 	const texture = new THREE.TextureLoader().load('textures/moon.jpg');
 	super(univers,
 	      Planet.createLayerMesh(size),
-	      new THREE.MeshPhongMaterial({
+	      new THREE.MeshLambertMaterial({
 		  map:texture,
 		  color: 0xFF8800,
 		  side: THREE.DoubleSide,
@@ -53,7 +53,7 @@ class Planet extends BasicEntity {
     }
 
     static createLayerTexture(color, polygonOffsetFactor) {
-	return new THREE.MeshPhongMaterial({
+	return new THREE.MeshLambertMaterial({
             color: color,
             flatShading: true,
             side: THREE.DoubleSide,
