@@ -65,13 +65,11 @@ class HUD {
     }
 
     mouseMove(event) {
-	console.log()
 	const canvas = this.canvas;
 	const camera = this.camera;
 	var point = this.point;
 	point.x = ( event.clientX / canvas.width ) * 2 - 1;
 	point.y = - ( event.clientY / canvas.height ) * 2 + 1;
-	console.log(point)
     }
 
     mouseClick(event) {
