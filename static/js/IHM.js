@@ -43,7 +43,8 @@ class IHM {
       add_gaz_extractor: function() {},
       handle_fullscreen: function() {
 	screenfull.toggle();
-	screen.orientation.lock("landscape-primary");    
+	if (screen.orientation)
+	  screen.orientation.lock("landscape-primary");    
       },
       zoom: 0
     });
