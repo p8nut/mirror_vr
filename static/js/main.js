@@ -50,6 +50,6 @@ function bindCamera() {
 	gameManager.controller.position.set(p.x, p.y, p.z);
 	gameManager.controller.quaternion.set(p.qx,p.qy,p.qz,p.qw);
 	// Quick fix for camera orientation in MirrorVR camera.lookAt
-	gameManager.rotation.set(-Math.PI/2,0,0);
+	gameManager.camera.rotation.set(-Math.PI/2,0,0);
     };
 }

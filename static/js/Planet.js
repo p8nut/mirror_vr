@@ -13,10 +13,9 @@ class Planet extends BasicEntity {
 		  polygonOffsetFactor: 0,
 	      }));
 	const grid = this.grid = new THREE.Mesh(new THREE.IcosahedronGeometry(size, 4), false);
+	this.add(grid);
 	Planet.createLayers(this, size);
 	Planet.addResourcesAndBuilding(this);
-	this.add(grid);
-	//ADD SUBLAYER OF PLANET
     }
     static addResourcesAndBuilding(planet) {
 	let vertices = _.sampleSize(planet.grid.geometry.vertices, 50);
