@@ -1,28 +1,52 @@
 class Planet extends BasicEntity {
     constructor(univers) {
+	const size = 1;
+	
 	const texture = new THREE.TextureLoader().load('textures/moon.jpg');
 	super(univers,
-	      Planet.createLayerMesh(1),
+	      Planet.createLayerMesh(size),
 	      new THREE.MeshPhongMaterial({
 		  map:texture,
 		  color: 0xFF8800,
-		  //flatShading: true,
 		  side: THREE.DoubleSide,
 		  polygonOffset: true,
 		  polygonOffsetFactor: 0,
-		  //wireframe:true
 	      }));
-	const grid = this.grid = new THREE.Mesh(
-	    this.geometry.clone(), false);
+	const grid = this.grid = new THREE.Mesh(new THREE.IcosahedronGeometry(size, 4), false);
+	Planet.createLayers(this, size);
+	Planet.addResourcesAndBuilding(this);
 	this.add(grid);
 	//ADD SUBLAYER OF PLANET
     }
+    static addResourcesAndBuilding(planet) {
+	let vertices = _.sampleSize(planet.grid.geometry.vertices, 50);
+	vertices.forEach(vertice => {
+            let resource = new Resource(planet);
+            resource.position.copy(vertice)
+	    resource.lookAt(planet.position);
+	})
+    }
     
+    static createLayers(planet, size) {
+	planet.add(new THREE.Mesh(
+	    Planet.createLayerMesh(size * 0.95),
+	    Planet.createLayerTexture(0xff0000, -0.1)));
+	planet.add(new THREE.Mesh(
+	    Planet.createLayerMesh(size * 0.80),
+	    Planet.createLayerTexture(0xff4500, -0.2)));
+	planet.add(new THREE.Mesh(
+	    Planet.createLayerMesh(size * 0.5),
+	    Planet.createLayerTexture(0xffd700, -0.3)));
+	planet.add(new THREE.Mesh(
+	    Planet.createLayerMesh(size * 0.1),
+	    Planet.createLayerTexture(0xffffff, -0.4)));
+    }
+
     static createLayerMesh(size/*, {min, max}*/) {
+        const min = 1;
+        const max = 1.02;
 	var mesh = new THREE.IcosahedronGeometry(size, 4);
 	mesh.vertices.forEach(element => {
-            const min = 1;
-            const max = 1.02;
             element.multiplyScalar(Math.random() * (max - min) + min);
 	});
 	return mesh;

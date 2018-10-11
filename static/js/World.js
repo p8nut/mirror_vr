@@ -6,7 +6,7 @@ class World {
 	
 	const aspectRatio = canvas.width / canvas.height;
 	const fieldOfView = 60;
-	const nearPlane = 0.1;
+	const nearPlane = 1;
 	const farPlane = 100; 
 
 	const controller = this.controller = new THREE.Group();
