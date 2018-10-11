@@ -12,6 +12,7 @@ class MirrorVR{
 	const controller = this.controller = univers.controller;
 	const camera = this.camera = univers.camera;
 	const planet = this.planet = univers.planet;
+	const main_base = planet.main_base;
 	//////////////// END SCENE /////////////////
 
 	//////////////// BEGIN HUD /////////////////

@@ -3,7 +3,7 @@ class MainBase extends Building {
 	super(univers)
 	const tower = new BasicEntity(this,
 				      new THREE.IcosahedronGeometry(0.035, 1),
-				      new THREE.MeshPhongMaterial({color: 0xFFFF00}))
+				      new THREE.MeshPhongMaterial({color: 0xFF0000}))
 	//this.add(tower);
 	tower.position.set(0,0,-0.03);
 
@@ -15,6 +15,7 @@ class MainBase extends Building {
 
     mouseClick(event) {
 	console.log("MainBase clicked")
+	this.food += 10;
 	return true;
     }
 }

@@ -10,6 +10,8 @@ class Univers extends THREE.Scene{
 	//////////////// BEGIN PLANET //////////////
 	const planet = this.planet = new Planet(this)
 	planet.position.set(0,1,0);
+
+	const main_base = this.main_base = this.planet.main_base;
 	//////////////// END PLANET //////////////
 
 	//////////////// BEGIN SUN /////////////////

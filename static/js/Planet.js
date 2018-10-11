@@ -17,8 +17,13 @@ class Planet extends BasicEntity {
 	Planet.createLayers(this, size);
 	Planet.addResourcesAndBuilding(this);
     }
+
     static addResourcesAndBuilding(planet) {
 	let vertices = _.sampleSize(planet.grid.geometry.vertices, 20);
+	let vertice = vertices.pop()
+	let main_base = planet.main_base = new MainBase(planet)
+        main_base.position.copy(vertice)
+	main_base.lookAt(planet.position);
 
 	let v = 0
 	vertices.forEach(vertice => {
