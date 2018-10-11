@@ -18,9 +18,17 @@ class Planet extends BasicEntity {
 	Planet.addResourcesAndBuilding(this);
     }
     static addResourcesAndBuilding(planet) {
-	let vertices = _.sampleSize(planet.grid.geometry.vertices, 50);
+	let vertices = _.sampleSize(planet.grid.geometry.vertices, 20);
+
+	let v = 0
 	vertices.forEach(vertice => {
-            let resource = new Resource(planet);
+	    let resource = null;
+	    if (v % 3) {
+		resource = new MineralResource(planet);
+	    } else {
+		resource = new GasResource(planet);
+	    }
+	    v++;
             resource.position.copy(vertice)
 	    resource.lookAt(planet.position);
 	})
@@ -89,7 +97,7 @@ class Planet extends BasicEntity {
 		return true;
 	    }
 	}
-	let building = new Building(this);
+	let building = new MainBase(this);
 	building.position.copy(vertice)
 	building.lookAt(this.position)
 	return true;

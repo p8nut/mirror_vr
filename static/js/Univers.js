@@ -34,8 +34,8 @@ class Univers extends THREE.Scene{
     static buildCamera(canvas) {
 	const aspectRatio = canvas.width / canvas.height;
 	const fieldOfView = 60;
-	const nearPlane = 1;
-	const farPlane = 10000;
+	const nearPlane = 0.15;
+	const farPlane = 1000000;
 	return new THREE.PerspectiveCamera(fieldOfView, aspectRatio, nearPlane, farPlane);
     }
 

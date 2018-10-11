@@ -24,6 +24,7 @@ class MirrorVR{
 	
 	this.univers.update(elapsedTime);
 	this.hud.update(elapsedTime);
+
 	this.renderer.clear()
 	this.univers.render(this.renderer);
 	this.renderer.clearDepth()
@@ -50,6 +51,7 @@ class MirrorVR{
 	    this.univers.mouseClick(evt);
 	}
     }
+
     mouseDoubleClick(evt) {
 	evt.preventDefault()
     }
