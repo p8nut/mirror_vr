@@ -1,6 +1,6 @@
 const canvas = document.getElementById("canvas");
 
-const gameManager = new MirrorVR(canvas);
+const mirrorVR = new MirrorVR(canvas);
 
 bindCamera();
 bindEventListeners();
@@ -8,16 +8,11 @@ render();
 
 function bindEventListeners() {
     window.onresize = resizeCanvas;
-    window.ondblclick = evt => gameManager.mouseDoubleClick(evt)
-    window.onclick = evt => {
-	// if (screenfull.enabled) {
-	//     screenfull.request();
-	// }
-
-	// screen.orientation.lock("portrait-primary");
-	gameManager.mouseClick(evt)
+    canvas.ondblclick = evt => mirrorVR.mouseDoubleClick(evt)
+    canvas.onclick = evt => {
+	mirrorVR.mouseClick(evt)
     }
-    window.onmousemove = evt => gameManager.mouseMove(evt)
+    canvas.onmousemove = evt => mirrorVR.mouseMove(evt)
     resizeCanvas();
 }
 
@@ -28,12 +23,12 @@ function resizeCanvas() {
     canvas.width  = canvas.offsetWidth;
     canvas.height = canvas.offsetHeight;
     
-    gameManager.windowResize();
+    mirrorVR.windowResize();
 }
 
 function render() {
     requestAnimationFrame(render);
-    gameManager.update();
+    mirrorVR.update();
 }
 
 function bindCamera() {
@@ -47,9 +42,9 @@ function bindCamera() {
     }
     websocket.onmessage = function(evt){
 	let p = JSON.parse(evt.data)
-	gameManager.controller.position.set(p.x, p.y, p.z);
-	gameManager.controller.quaternion.set(p.qx,p.qy,p.qz,p.qw);
+	mirrorVR.controller.position.set(p.x, p.y, p.z);
+	mirrorVR.controller.quaternion.set(p.qx,p.qy,p.qz,p.qw);
 	// Quick fix for camera orientation in MirrorVR camera.lookAt
-	gameManager.camera.rotation.set(-Math.PI/2,0,0);
+	mirrorVR.camera.rotation.set(-Math.PI/2,0,0);
     };
 }
