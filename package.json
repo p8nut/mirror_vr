@@ -9,11 +9,13 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "dat.gui": "^0.7.3",
     "express": "^4.16.3",
     "lodash": "^4.17.11",
     "openvr": "git+https://github.com/p8nut/node-openvr.git",
     "screenfull": "^3.3.3",
     "three": "^0.97.0",
+    "three-gpu-particle-system": "git+https://github.com/fazeaction/three-gpu-particle-system.git",
     "ws": "^6.0.0"
   }
 }
