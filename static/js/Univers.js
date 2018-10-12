@@ -31,6 +31,9 @@ class Univers extends THREE.Scene{
 	camera.lookAt(this.planet.position);
 	//////////////// END CAMERA ////////////////
 
+	//////////////// BEGIN POPUP /////////////////
+	const popup = this.popup = new PopUp(this);
+	//////////////// END POPUP ///////////////////
     }
 
     static buildCamera(canvas) {
