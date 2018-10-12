@@ -48,10 +48,10 @@ class Univers extends THREE.Scene{
 	camera.updateProjectionMatrix();
     }
     
-    update(elapsedTime) {
+    update(elapsedTime, delta) {
 	for (let i = 0; i < this.children.length; ++i) {
 	    if(this.children[i].update) {
-		this.children[i].update(elapsedTime);
+		this.children[i].update(elapsedTime, delta);
 	    }
 	}
     }

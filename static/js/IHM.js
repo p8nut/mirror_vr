@@ -53,7 +53,7 @@ class IHM {
 	opt.add(options, "handle_fullscreen").name("Fullscreen");
 	opt.open();
     }
-    update(elapsedTime) {
+    update(elapsedTime, delta) {
 	this.handle_zoom();
     }
     handle_zoom() {

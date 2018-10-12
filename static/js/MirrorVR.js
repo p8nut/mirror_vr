@@ -23,10 +23,11 @@ class MirrorVR{
 
     update() {
 	const elapsedTime = this.clock.getElapsedTime();
+	const delta = this.clock.getDelta();
 	
-	this.univers.update(elapsedTime);
-	this.hud.update(elapsedTime);
-	this.ihm.update(elapsedTime);
+	this.univers.update(elapsedTime, delta);
+	this.hud.update(elapsedTime, delta);
+	this.ihm.update(elapsedTime, delta);
 
 	this.renderer.clear()
 	this.univers.render(this.renderer);
