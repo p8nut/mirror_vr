@@ -1,15 +1,12 @@
 class PopUp {
   constructor() {
-    var msgbox = this.msgbox = document.getElementById("msgbox");
+    this.msgbox = document.getElementById("msgbox");
   }
   send(text) {
     this.msgbox.innerHTML = text;
     this.msgbox.style.display = "block";
     this.msgbox.style.display = -100;
-    animatePopUp();
-  }
-  close() {
-    this.msgbox.style.display = "none";
+    this.animatePopUp();
   }
   animatePopUp() {
     var pos = -250;
@@ -22,5 +19,14 @@ class PopUp {
         this.msgbox.style.left = pos + "px";
       }
     }
+    window.setTimeout(this.close, 3000);
   }
+  close() {
+    this.msgbox.style.display = "none";
+  }
+}
+
+function closePopUp() {
+  var msgbox = document.getElementById("msgbox");
+  msgbox.style.display = "none";
 }
