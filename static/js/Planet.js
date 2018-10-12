@@ -11,6 +11,7 @@ class Planet extends BasicEntity {
 		  side: THREE.DoubleSide,
 		  polygonOffset: true,
 		  polygonOffsetFactor: 0,
+		  wireframe:true
 	      }));
 	const grid = this.grid = new THREE.Mesh(new THREE.IcosahedronGeometry(size, 4), false);
 	this.add(grid);
@@ -71,14 +72,15 @@ class Planet extends BasicEntity {
             side: THREE.DoubleSide,
             polygonOffset: true,
             polygonOffsetFactor: polygonOffsetFactor,
-            //wireframe:true
+            wireframe:true
 	});
     }
 
-    update(elapsedTime) {
+    update(elapsedTime, delta) {
     	if (elapsedTime % 2) {
 	    this.rotation.y += Math.PI / 2640;
 	}
+	super.update(elapsedTime, delta);
     }
     
     mouseClick(intersect) {
