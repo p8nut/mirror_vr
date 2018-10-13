@@ -1,7 +1,7 @@
 # Exported from 3D Builder
-mtllib Object.mtl
+mtllib GasFactory.mtl
 
-o Object.1
+o FasFactory.1
 v 21.770765 -22.799505 5.493693
 v 19.914938 -22.799505 5.493694
 v 19.914572 -22.809418 1.412095

@@ -10,6 +10,9 @@ class Farm extends Building {
     this.lastHarvest = 0;
     this.harvestCooldown = 4000;
   };
+    update(){
+	
+    }
   mouseClick() {
     if (this.harvestCooldown + this.lastHarvest < performance.now()) {
       this.lastHarvest = performance.now();
