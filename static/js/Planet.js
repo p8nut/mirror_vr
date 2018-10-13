@@ -77,7 +77,7 @@ class Planet extends BasicEntity {
     }
 
     update(elapsedTime, delta) {
-    	if (elapsedTime % 2) {
+	if (elapsedTime % 2) {
 	    this.rotation.y += Math.PI / 2640;
 	}
 	super.update(elapsedTime, delta);

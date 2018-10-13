@@ -27,8 +27,10 @@ function resizeCanvas() {
 }
 
 function render() {
+    
     requestAnimationFrame(render);
     mirrorVR.update();
+
 }
 
 function bindCamera() {
