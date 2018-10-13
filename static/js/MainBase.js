@@ -15,7 +15,6 @@ class MainBase extends Building {
 
     mouseClick(event) {
 	console.log("MainBase clicked")
-	this.food += 10;
 	return true;
     }
 }

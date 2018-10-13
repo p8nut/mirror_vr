@@ -30,10 +30,6 @@ class Univers extends THREE.Scene{
 	controller.add(camera);
 	camera.lookAt(this.planet.position);
 	//////////////// END CAMERA ////////////////
-
-	//////////////// BEGIN POPUP /////////////////
-	const popup = this.popup = new PopUp(this);
-	//////////////// END POPUP ///////////////////
     }
 
     static buildCamera(canvas) {
@@ -67,7 +63,6 @@ class Univers extends THREE.Scene{
     }
 
     mouseClick(event) {
-	console.log("click WORLD")
 	let intersects = Univers.findIntersects(this, event);
 	for (let i = 0; i < intersects.length; i++) {
 	    const intersect = intersects[i];
