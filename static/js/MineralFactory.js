@@ -4,6 +4,11 @@ assetManager.load(
   "./objects/Buildings/MineralFactory/MineralFactory.obj",
   "./objects/Buildings/MineralFactory/MineralFactory.mtl"
 );
+assetManager.load(
+  "MineralIcon",
+  "./objects/Items/Mineral/Mineral.obj",
+  "./objects/Items/Mineral/Mineral.mtl"
+);
 
 class MineralFactory extends Building {
   constructor(univers) {
@@ -12,17 +17,16 @@ class MineralFactory extends Building {
       new THREE.BoxGeometry(0.05, 0.05, 0.05),
       new THREE.MeshLambertMaterial({ color: 0x00ff00 })
     );
-    this.icon = new BasicEntity(
-      this,
-      new THREE.BoxGeometry(0.05, 0.05, 0.05),
-      new THREE.MeshLambertMaterial({ color: 0x00ff00 })
-    );
-    this.icon.position.z = -0.2;
-    this.model = assetManager.getObject("MineralFactory");
+    this.model = assetManager.getObject("MineralFactory").clone();
     this.model.scale.set(0.002, 0.002, 0.002);
     this.model.rotation.y = Math.PI;
     this.add(this.model);
-    
+    this.iconModel = assetManager.getObject("MineralIcon").clone();
+    this.iconModel.scale.set(0.002, 0.002, 0.002);
+    this.iconModel.rotation.y = Math.PI;
+    this.iconModel.position.z = -0.2;
+    this.add(this.iconModel);
+
     this.buildingDelay = 4;
     this.maxGain = 30;
     this.lastHarvest = 0;
@@ -38,8 +42,11 @@ class MineralFactory extends Building {
     }
   }
   update(elapsedTime, delta) {
-    if (this.isHarvestable(elapsedTime)) this.icon.visible = true;
-    else this.icon.visible = false;
+    if (this.isHarvestable(elapsedTime)) {
+      this.iconModel.visible = true;
+    } else {
+      this.iconModel.visible = false;
+    }
   }
   static get costMineral() {
     return 10;
