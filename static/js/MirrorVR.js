@@ -46,20 +46,21 @@ class MirrorVR{
 	this.renderer.resize()
     }
 
-    mouseMove(evt) {
-	evt.preventDefault()
-	this.hud.mouseMove(evt);
-	this.univers.mouseMove(evt);
+    mouseMove(event) {
+	event.preventDefault()
+	this.hud.mouseMove(event);
+	this.univers.mouseMove(event);
     }
 
-    mouseClick(evt) {
-	evt.preventDefault()
-	if (this.hud.mouseClick(evt) !== true) {
-	    this.univers.mouseClick(evt);
+    mouseClick(event) {
+	event.preventDefault()
+	const elapesdTime = this.clock.getElapsedTime();
+	if (this.hud.mouseClick(event) !== true) {
+	    this.univers.mouseClick(event, elapesdTime);
 	}
     }
 
-    mouseDoubleClick(evt) {
-	evt.preventDefault()
+    mouseDoubleClick(event) {
+	event.preventDefault()
     }
 }

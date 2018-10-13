@@ -13,7 +13,7 @@ class MainBase extends Building {
 	var population = this.population = 10;
     }
 
-    mouseClick(event) {
+    mouseClick(event, elapsedTime) {
 	console.log("MainBase clicked")
 	return true;
     }

@@ -62,12 +62,12 @@ class Univers extends THREE.Scene{
     mouseMove() {
     }
 
-    mouseClick(event) {
+    mouseClick(event, elapsedTime) {
 	let intersects = Univers.findIntersects(this, event);
 	for (let i = 0; i < intersects.length; i++) {
 	    const intersect = intersects[i];
 	    if (intersect.object && intersect.object.mouseClick) {
-		if (intersect.object.mouseClick(intersect) === true)
+		if (intersect.object.mouseClick(intersect, elapsedTime) === true)
 		    return true;
 	    }
 	}

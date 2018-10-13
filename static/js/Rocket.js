@@ -5,12 +5,11 @@ class Rocket extends Building {
       new THREE.BoxGeometry(0.05, 0.05, 0.05),
       new THREE.MeshLambertMaterial({ color: 0x00ff00 })
     );
-    this.buildingDelay = 5000;
+    this.buildingDelay = 5;
     this.maxGain = 15;
     this.lastHarvest = 0;
-    this.harvestCooldown = 4000;
   }
-  mouseClick() {
+  mouseClick(event, elapsedTime) {
     if (this.univers.main_base.gas >= Rocket.costGas)
       this.univers.main_base.gas -= Rocket.costGas;
       // launch Rocket

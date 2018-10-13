@@ -73,7 +73,7 @@ class HUD {
 	point.y = - ( event.clientY / canvas.height ) * 2 + 1;
     }
 
-    mouseClick(event) {
+    mouseClick(event, elapsedTime) {
 	const canvas = this.canvas;
 	const camera = this.camera;
 	var point = this.point;
