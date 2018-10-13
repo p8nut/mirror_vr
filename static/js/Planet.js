@@ -102,12 +102,10 @@ class Planet extends BasicEntity {
 	    }
 	}
 	if (buildingType != null) {
-		if (buildingType.costMineral > this.main_base.minerals ||
-			buildingType.costGas > this.main_base.gas)
+		if (buildingType.costMineral > this.main_base.minerals)
 			return true;
 		let building = new buildingType(this);
 		this.main_base.minerals -= buildingType.costMineral;
-		this.main_base.gas -= buildingType.costGas;
 		building.position.copy(vertice)
 		building.lookAt(this.position)
 		buildingType = null;
