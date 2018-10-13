@@ -33,7 +33,11 @@ class IHM {
       add_gas_factory: function() {
 	buildingType = GasFactory;
       },
+      add_farm: function() {
+	buildingType = Farm;
+      },
       add_rocket: function (){	      
+	      buildingType = Rocket;
       },
       handle_fullscreen: function() {
         screenfull.toggle();
@@ -45,8 +49,9 @@ class IHM {
 
     var build = this.ihm.addFolder("Build");
     build.add(options, "add_mineral_factory").name("Mineral factory <span class=\"resCost\">" + MineralFactory.costMineral + " <img class=\"Logo\" src=\"./objects/Logo/Rock.png\"></span>");
-    build.add(options, "add_gas_factory").name("Gas factory<span class=\"resCost\">" + GasFactory.costMineral + " <img class=\"Logo\" src=\"./objects/Logo/Rock.png\"></span>");
-    build.add(options, "add_rocket").name("Rocket");
+    build.add(options, "add_gas_factory").name("Gas factory <span class=\"resCost\">" + GasFactory.costMineral + " <img class=\"Logo\" src=\"./objects/Logo/Rock.png\"></span>");
+    build.add(options, "add_farm").name("Farm <span class=\"resCost\">" + Farm.costMineral + " <img class=\"Logo\" src=\"./objects/Logo/Rock.png\"></span>");
+    build.add(options, "add_rocket").name("Rocket <span class=\"resCost\">" + Rocket.costMineral + " <img class=\"Logo\" src=\"./objects/Logo/Rock.png\"></span>");
     build.open();
 
     var opt = this.ihm.addFolder("Options");
