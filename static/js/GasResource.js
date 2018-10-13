@@ -4,7 +4,7 @@ class GasResource extends BasicEntity {
 	      new THREE.BoxGeometry(0.05, 0.05, 0.05),
 	      new THREE.MeshLambertMaterial({color: 0x00FF00}));
     }
-    mouseClick(){
+    mouseClick(event, elapsedTime){
 	return true
     }
 }

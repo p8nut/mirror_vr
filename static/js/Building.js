@@ -10,7 +10,7 @@ class Building extends BasicEntity {
     this.lastHarvest = 0;
     this.harvestCooldown = 0;
   };
-  mouseClick() {
+  mouseClick(event, elapsedTime) {
     return true;
   };
   update(elapsedTime, delta) {

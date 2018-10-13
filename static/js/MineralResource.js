@@ -30,7 +30,7 @@ class MineralResource extends BasicEntity {
 */
     }
 
-    mouseClick(){
+    mouseClick(event, elapsedTime){
 	return true
     }
 

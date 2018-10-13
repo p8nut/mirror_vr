@@ -81,7 +81,7 @@ class Planet extends BasicEntity {
 	super.update(elapsedTime, delta);
     }
     
-    mouseClick(intersect) {
+    mouseClick(intersect, elapsedTime) {
 	let vertices = this.grid.geometry.vertices;
 	let local_intersect = this.worldToLocal(intersect.point);
 	let vertice = null;

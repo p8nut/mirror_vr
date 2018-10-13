@@ -20,9 +20,9 @@ class BasicEntity extends THREE.Mesh {
 	return false;
     }
     
-    mouseClick(event) {
+    mouseClick(intersects, elapsedTime) {
 	if (this.parent && this.parent.mouseClick) {
-	    return this.parent.mouseClick(event);
+	    return this.parent.mouseClick(intersects, elapsedTime);
 	}
 	return false;
     }

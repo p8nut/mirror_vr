@@ -8,11 +8,11 @@ render();
 
 function bindEventListeners() {
     window.onresize = resizeCanvas;
-    canvas.ondblclick = evt => mirrorVR.mouseDoubleClick(evt)
-    canvas.onclick = evt => {
-	mirrorVR.mouseClick(evt)
+    canvas.ondblclick = event => mirrorVR.mouseDoubleClick(event)
+    canvas.onclick = event => {
+	mirrorVR.mouseClick(event)
     }
-    canvas.onmousemove = evt => mirrorVR.mouseMove(evt)
+    canvas.onmousemove = event => mirrorVR.mouseMove(event)
     resizeCanvas();
 }
 
@@ -37,13 +37,13 @@ function bindCamera() {
     var wsUri = 'ws://'+window.location.hostname+':9090'
     console.log(wsUri)
     let websocket = new WebSocket(wsUri);
-    websocket.onopen = evt => console.log(evt);
-    websocket.onclose = evt => console.log(evt);
-    websocket.onerror = evt => {
-	console.log(evt);
+    websocket.onopen = event => console.log(event);
+    websocket.onclose = event => console.log(event);
+    websocket.onerror = event => {
+	console.log(event);
     }
-    websocket.onmessage = function(evt){
-	let p = JSON.parse(evt.data)
+    websocket.onmessage = function(event){
+	let p = JSON.parse(event.data)
 	mirrorVR.controller.position.set(p.x, p.y, p.z);
 	mirrorVR.controller.quaternion.set(p.qx,p.qy,p.qz,p.qw);
 	// Quick fix for camera orientation in MirrorVR camera.lookAt
