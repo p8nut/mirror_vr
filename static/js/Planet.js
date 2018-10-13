@@ -11,7 +11,6 @@ class Planet extends BasicEntity {
 		  side: THREE.DoubleSide,
 		  polygonOffset: true,
 		  polygonOffsetFactor: 0,
-		  wireframe:true
 	      }));
 	const grid = this.grid = new THREE.Mesh(new THREE.IcosahedronGeometry(size, 4), false);
 	this.add(grid);
@@ -72,7 +71,6 @@ class Planet extends BasicEntity {
             side: THREE.DoubleSide,
             polygonOffset: true,
             polygonOffsetFactor: polygonOffsetFactor,
-            wireframe:true
 	});
     }
 
@@ -84,7 +82,6 @@ class Planet extends BasicEntity {
     }
     
     mouseClick(intersect) {
-	console.log("add building")
 	let vertices = this.grid.geometry.vertices;
 	let local_intersect = this.worldToLocal(intersect.point);
 	let vertice = null;
@@ -104,9 +101,18 @@ class Planet extends BasicEntity {
 		return true;
 	    }
 	}
-	let building = new MainBase(this);
-	building.position.copy(vertice)
-	building.lookAt(this.position)
+	if (buildingType != null) {
+		if (buildingType.costMineral > this.main_base.minerals ||
+			buildingType.costGas > this.main_base.gas)
+			return true;
+		let building = new buildingType(this);
+		this.main_base.minerals -= buildingType.costMineral;
+		this.main_base.gas -= buildingType.costGas;
+		building.position.copy(vertice)
+		building.lookAt(this.position)
+		buildingType = null;
+	}
 	return true;
     }
 }
+var buildingType = null;

@@ -7,6 +7,7 @@ body {
   margin: 0;
 }
 
+/* BEGIN IHM */
 #stat {
   position: relative;
   float: left;
@@ -18,9 +19,26 @@ body {
   margin-right: 0px;
 }
 
+.resName{
+	float:left;
+}
+
+.resCost{
+	float:right;
+}
+
+.dg .cr.function, .dg .cr.function .property-name, .dg .cr.function *, .dg .cr.boolean, .dg .cr.boolean * {
+	width: auto;
+}
+
 .close-button.close-bottom {
   opacity: 0;
 }
+
+.dg .cr.function .property-name {
+	width: 100%!important;
+}
+/* END IHM */
 
 .msgbox {
   padding: 20px;

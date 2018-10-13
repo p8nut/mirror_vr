@@ -18,7 +18,10 @@ class MirrorVR{
 	//////////////// BEGIN HUD /////////////////
 	const hud = this.hud = new HUD(canvas, univers);
 	const ihm = this.ihm = new IHM(univers);
-	//////////////// END HUD ///////////////////	
+	//////////////// END HUD ///////////////////
+	//////////////// BEGIN POPUP ///////////////
+	const popup = this.popup = new PopUp(this);
+	//////////////// END POPUP /////////////////
     }
 
     update() {
