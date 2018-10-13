@@ -10,7 +10,7 @@ class MineralResource extends BasicEntity {
     super(
       univers,
       new THREE.BoxGeometry(0.05, 0.05, 0.05),
-      new THREE.MeshLambertMaterial({ color: 0xffff00, wireframe: true })
+      new THREE.MeshLambertMaterial({ color: 0xffff00 })
     );
     /*
 	var particleSystem = this.particleSystem = new THREE.GPUParticleSystem( {

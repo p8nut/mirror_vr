@@ -1,8 +1,13 @@
 var assetManager = AssetManager.getInstance();
 assetManager.load(
-  "gasFactory",
+  "GasFactory",
   "./objects/Buildings/GasFactory/GasFactory.obj",
   "./objects/Buildings/GasFactory/GasFactory.mtl"
+);
+assetManager.load(
+  "GasIcon",
+  "./objects/Items/Gas/Gas.obj",
+  "./objects/Items/Gas/Gas.mtl"
 );
 
 class GasFactory extends Building {
@@ -12,17 +17,16 @@ class GasFactory extends Building {
       new THREE.BoxGeometry(0.05, 0.05, 0.05),
       new THREE.MeshLambertMaterial({ color: 0x00ff00 })
     );
-    this.icon = new BasicEntity(
-      this,
-      new THREE.BoxGeometry(0.05, 0.05, 0.05),
-      new THREE.MeshLambertMaterial({ color: 0x00ff00 })
-    );
-    this.icon.position.z = -0.2;
-    this.model = assetManager.getObject("gasFactory").clone();
+    this.model = assetManager.getObject("GasFactory").clone();
     this.model.scale.set(0.002, 0.002, 0.002);
     this.model.rotation.y = Math.PI;
     this.add(this.model);
-    
+    this.iconModel = assetManager.getObject("GasIcon").clone();
+    this.iconModel.scale.set(0.002, 0.002, 0.002);
+    this.iconModel.rotation.y = Math.PI;
+    this.iconModel.position.z = -0.2;
+    this.add(this.iconModel);
+
     this.buildingDelay = 2;
     this.maxGain = 10;
     this.lastHarvest = 0;
@@ -38,8 +42,8 @@ class GasFactory extends Building {
     }
   }
   update(elapsedTime, delta) {
-    if (this.isHarvestable(elapsedTime)) this.icon.visible = true;
-    else this.icon.visible = false;
+    if (this.isHarvestable(elapsedTime)) this.iconModel.visible = true;
+    else this.iconModel.visible = false;
   }
   static get costMineral() {
     return 20;
