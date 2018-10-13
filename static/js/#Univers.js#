@@ -32,8 +32,20 @@ class Univers extends THREE.Scene{
 	camera.lookAt(this.planet.position);
 	//////////////// END CAMERA ////////////////
 
-	//////////////// BEGIN STATS ////////////////
+s
 
+	var container;
+
+	container = document.getElementById( 'container' );
+	      console.log(container);
+
+	this.stats = new Stats();
+	console.log("nope");
+	container.appendChild( stats.dom )
+	console.log("nope");
+	container.appendChild( renderer.domElement)
+	console.log("nope");
+	console.log(container);
 	//////////////// END STATS ////////////////
     }
 
@@ -62,6 +74,7 @@ class Univers extends THREE.Scene{
 
     render(renderer) {
 	renderer.render(this, this.camera);
+	this.stats.update();
     }
 
     mouseMove() {

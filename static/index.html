@@ -9,17 +9,22 @@
 </head>
 
 <body>
-	<div class="msgbox" id="msgbox" style="display: none;" onclick="closePopUp()"></div>
+
+  <div class="msgbox" id="msgbox" style="display: none;" onclick="closePopUp()"></div>
+  
 	<canvas id="canvas"></canvas>
 
 	<script src="modules/screenfull/dist/screenfull.js"></script>
 	<script src="modules/lodash/lodash.min.js"></script>
 	<script src="modules/dat.gui/build/dat.gui.min.js"></script>
 	<script src="modules/three/build/three.min.js"></script>
+
+	
 	<script src="three-utils/GPUParticleSystem.js"></script>
 	<script src="three-utils/loaders/LoaderSupport.js"></script>
 	<script src="three-utils/loaders/MTLLoader.js"></script>
 	<script src="three-utils/loaders/OBJLoader.js"></script>
+	<script src="three-utils/stats.min.js"></script>
 
 
 	<script src="js/AssetManager.js"></script>
@@ -41,6 +46,8 @@
 	<script src="js/HUD.js"></script>
 	<script src="js/IHM.js"></script>
 	<script src="js/main.js"></script>
+	
+	<div id="container2"></div>	  
 </body>
 
 </html>
