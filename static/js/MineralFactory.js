@@ -1,3 +1,10 @@
+var assetManager = AssetManager.getInstance();
+assetManager.load(
+  "MineralFactory",
+  "./objects/Buildings/MineralFactory/MineralFactory.obj",
+  "./objects/Buildings/MineralFactory/MineralFactory.mtl"
+);
+
 class MineralFactory extends Building {
   constructor(univers) {
     super(
@@ -11,6 +18,11 @@ class MineralFactory extends Building {
       new THREE.MeshLambertMaterial({ color: 0x00ff00 })
     );
     this.icon.position.z = -0.2;
+    this.model = assetManager.getObject("MineralFactory");
+    this.model.scale.set(0.002, 0.002, 0.002);
+    this.model.rotation.y = Math.PI;
+    this.add(this.model);
+    
     this.buildingDelay = 4;
     this.maxGain = 30;
     this.lastHarvest = 0;

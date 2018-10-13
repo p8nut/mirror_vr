@@ -1,3 +1,9 @@
+var assetManager = AssetManager.getInstance();
+assetManager.load(
+  "Rocket",
+  "./objects/Buildings/Rocket/Rocket.obj",
+  "./objects/Buildings/Rocket/Rocket.mtl"
+);
 class Rocket extends Building {
   constructor(univers) {
     super(
@@ -5,6 +11,11 @@ class Rocket extends Building {
       new THREE.BoxGeometry(0.05, 0.05, 0.05),
       new THREE.MeshLambertMaterial({ color: 0x00ff00 })
     );
+    this.model = assetManager.getObject("Rocket").clone();
+    this.model.scale.set(0.002, 0.002, 0.002);
+    this.model.rotation.y = Math.PI;
+    this.add(this.model);
+    
     this.buildingDelay = 5;
     this.maxGain = 15;
     this.lastHarvest = 0;

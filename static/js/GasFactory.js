@@ -1,3 +1,10 @@
+var assetManager = AssetManager.getInstance();
+assetManager.load(
+  "gasFactory",
+  "./objects/Buildings/GasFactory/GasFactory.obj",
+  "./objects/Buildings/GasFactory/GasFactory.mtl"
+);
+
 class GasFactory extends Building {
   constructor(univers) {
     super(
@@ -11,6 +18,11 @@ class GasFactory extends Building {
       new THREE.MeshLambertMaterial({ color: 0x00ff00 })
     );
     this.icon.position.z = -0.2;
+    this.model = assetManager.getObject("gasFactory").clone();
+    this.model.scale.set(0.002, 0.002, 0.002);
+    this.model.rotation.y = Math.PI;
+    this.add(this.model);
+    
     this.buildingDelay = 2;
     this.maxGain = 10;
     this.lastHarvest = 0;

@@ -10,7 +10,7 @@ class AssetManager{
 	const promises = this.promises;
 	var objects = this.objects;
 
-	let promise = ModelManager._loadObject(obj_path, mtl_path);
+	let promise = AssetManager._loadObject(obj_path, mtl_path);
 
 	promise.then(function(object){
 	    objects.push({name:name, obj:object});
