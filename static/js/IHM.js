@@ -44,8 +44,8 @@ class IHM {
     });
 
     var build = this.ihm.addFolder("Build");
-    build.add(options, "add_mineral_factory").name("<span class=\"resName\">Mineral factory</span> <span class=\"resCost\">" + MineralFactory.costMineral + " minerals</span>");
-    build.add(options, "add_gas_factory").name("<span class=\"resName\">Gas factory</span> <span class=\"resCost\">" + GasFactory.costMineral + " minerals</span>");
+    build.add(options, "add_mineral_factory").name("Mineral factory <span class=\"resCost\">" + MineralFactory.costMineral + " <img class=\"Logo\" src=\"./objects/Logo/Rock.png\"></span>");
+    build.add(options, "add_gas_factory").name("Gas factory<span class=\"resCost\">" + GasFactory.costMineral + " <img class=\"Logo\" src=\"./objects/Logo/Rock.png\"></span>");
     build.add(options, "add_rocket").name("Rocket");
     build.open();
 

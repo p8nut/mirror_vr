@@ -28,7 +28,16 @@ body {
 }
 
 .dg .cr.function, .dg .cr.function .property-name, .dg .cr.function *, .dg .cr.boolean, .dg .cr.boolean * {
-	width: auto;
+    width: auto;
+    height: 30px;
+}
+
+.Logo{
+    width: 25px!important;
+    height: 25px!important;
+    padding-top: 3px;
+    float: right;
+    margin-left: 10px;
 }
 
 .close-button.close-bottom {
