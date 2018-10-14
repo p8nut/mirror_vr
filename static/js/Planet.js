@@ -75,10 +75,8 @@ class Planet extends BasicEntity {
     }
 
     update(elapsedTime, delta) {
-	if (elapsedTime % 2) {
-	    this.rotation.y += Math.PI / 2640;
-	}
-	super.update(elapsedTime, delta);
+	this.rotation.y += (Math.PI / 40) * (delta / 1000)
+    	super.update(elapsedTime, delta);
     }
     
     mouseClick(intersect, elapsedTime) {

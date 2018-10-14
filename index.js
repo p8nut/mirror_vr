@@ -7,10 +7,13 @@ app.use(express.static('static'));
 app.use('/modules', express.static('node_modules'));
 
 const server = app.listen(8080)
-
-const openvr = require("openvr");
-openvr.k_unMaxTrackedDeviceCount = 64;
-var vr = openvr.VR_Init(openvr.EVRApplicationType.Background)
+try {
+    const openvr = require("openvr");
+    openvr.k_unMaxTrackedDeviceCount = 64;
+    var vr = openvr.VR_Init(openvr.EVRApplicationType.Background)
+} catch(e) {
+    console.log(e)
+}
 
 function convert_to_quaternion(_pose_mat) {
     let pose_mat = Array.from(_pose_mat)
@@ -65,6 +68,7 @@ wss.on('error', function(event){
     console.error("SRV Error", event);    
 })
 
+if (vr) {
 const interval = setInterval(function updateClientsPosition() {
     let poses = vr.GetDeviceToAbsoluteTrackingPose(openvr.ETrackingUniverseOrigin.Standing, 0)
     for (let i = 0; i < openvr.k_unMaxTrackedDeviceCount; ++i) {
@@ -102,7 +106,7 @@ const interval = setInterval(function updateClientsPosition() {
     	}
     }
 }, 50);
-
+}
 function shutdown(code) {
     console.log('SIGNAL received...');
     clearInterval(interval);

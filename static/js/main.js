@@ -1,7 +1,4 @@
 const canvas = document.getElementById("canvas");
-// modelManager.load('gasFactory',
-//                   '/objects/Buildings/GasFactory/GasFactory.obj',
-//                   '/objects/Buildings/GasFactory/GasFactory.mtl');
 
 var assetManager = AssetManager.getInstance();
 assetManager.wait().then(function() {
@@ -9,7 +6,10 @@ assetManager.wait().then(function() {
 
   bindCamera();
   bindEventListeners();
-  render();
+  const fpsController = new FpsController(30, function(e){
+      mirrorVR.update()
+  });
+  fpsController.start();
 
   function bindEventListeners() {
     window.onresize = resizeCanvas;
@@ -31,10 +31,6 @@ assetManager.wait().then(function() {
     mirrorVR.windowResize();
   }
 
-  function render() {
-    requestAnimationFrame(render);
-    mirrorVR.update();
-  }
 
   function bindCamera() {
     var wsUri = "ws://" + window.location.hostname + ":9090";
