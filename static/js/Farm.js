@@ -1,10 +1,10 @@
 var assetManager = AssetManager.getInstance();
-assetManager.load(
+assetManager.loadObject(
   "Farm",
   "./objects/Buildings/Farm/Farm.obj",
   "./objects/Buildings/Farm/Farm.mtl"
 );
-assetManager.load(
+assetManager.loadObject(
   "FarmIcon",
   "./objects/Items/LightningBolt/LightningBolt.obj",
   "./objects/Items/LightningBolt/LightningBolt.mtl"

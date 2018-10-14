@@ -1,10 +1,10 @@
 var assetManager = AssetManager.getInstance();
-assetManager.load(
+assetManager.loadObject(
   "GasFactory",
   "./objects/Buildings/GasFactory/GasFactory.obj",
   "./objects/Buildings/GasFactory/GasFactory.mtl"
 );
-assetManager.load(
+assetManager.loadObject(
   "GasIcon",
   "./objects/Items/Gas/Gas.obj",
   "./objects/Items/Gas/Gas.mtl"

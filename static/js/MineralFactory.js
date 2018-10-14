@@ -1,10 +1,10 @@
 var assetManager = AssetManager.getInstance();
-assetManager.load(
+assetManager.loadObject(
   "MineralFactory",
   "./objects/Buildings/MineralFactory/MineralFactory.obj",
   "./objects/Buildings/MineralFactory/MineralFactory.mtl"
 );
-assetManager.load(
+assetManager.loadObject(
   "MineralIcon",
   "./objects/Items/Mineral/Mineral.obj",
   "./objects/Items/Mineral/Mineral.mtl"

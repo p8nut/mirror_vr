@@ -1,5 +1,5 @@
 var assetManager = AssetManager.getInstance();
-assetManager.load(
+assetManager.loadObject(
   "Rocket",
   "./objects/Buildings/Rocket/Rocket.obj",
   "./objects/Buildings/Rocket/Rocket.mtl"

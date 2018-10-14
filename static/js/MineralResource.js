@@ -1,5 +1,5 @@
 var assetManager = AssetManager.getInstance();
-assetManager.load(
+assetManager.loadObject(
   "MineralResource",
   "./objects/Buildings/MineralResource/MineralResource.obj",
   "./objects/Buildings/MineralResource/MineralResource.mtl"

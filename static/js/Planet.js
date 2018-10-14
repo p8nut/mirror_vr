@@ -1,12 +1,14 @@
+var assetManager = AssetManager.getInstance()
+
+assetManager.loadTexture('moon','textures/moon.jpg');
+
 class Planet extends BasicEntity {
     constructor(univers) {
 	const size = 1;
-	
-	const texture = new THREE.TextureLoader().load('textures/moon.jpg');
 	super(univers,
 	      Planet.createLayerMesh(size),
 	      new THREE.MeshLambertMaterial({
-		  map:texture,
+		  map:assetManager.getTexture('moon'),
 		  color: 0xFF8800,
 		  side: THREE.DoubleSide,
 		  polygonOffset: true,
