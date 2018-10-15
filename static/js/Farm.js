@@ -6,8 +6,8 @@ assetManager.loadObject(
 );
 assetManager.loadObject(
   "FarmIcon",
-  "./objects/Items/LightningBolt/LightningBolt.obj",
-  "./objects/Items/LightningBolt/LightningBolt.mtl"
+  "./objects/Items/Exclamation/Exclamation.obj",
+  "./objects/Items/Exclamation/Exclamation.mtl"
 );
 
 class Farm extends Building {

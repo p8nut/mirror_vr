@@ -1,8 +1,8 @@
 var assetManager = AssetManager.getInstance();
 assetManager.loadObject(
   "MineralResource",
-  "./objects/Buildings/MineralResource/MineralResource.obj",
-  "./objects/Buildings/MineralResource/MineralResource.mtl"
+  "./objects/Buildings/MineralResource/Minerals.obj",
+  "./objects/Buildings/MineralResource/Minerals.mtl"
 );
 
 class MineralResource extends BasicEntity {
@@ -38,7 +38,7 @@ class MineralResource extends BasicEntity {
 	this.add(particleSystem);
 */
     this.model = assetManager.getObject("MineralResource").clone();
-    this.model.scale.set(0.002, 0.002, 0.002);
+    this.model.scale.set(0.006, 0.006, 0.006);
     this.model.rotation.y = Math.PI;
     this.add(this.model);
   }

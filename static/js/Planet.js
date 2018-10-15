@@ -104,6 +104,7 @@ class Planet extends BasicEntity {
 	if (buildingType != null) {
 		if (buildingType.costMineral > this.main_base.minerals)
 			return true;
+		
 		let building = new buildingType(this);
 		this.main_base.minerals -= buildingType.costMineral;
 		building.position.copy(vertice)

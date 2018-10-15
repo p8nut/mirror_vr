@@ -1,13 +1,13 @@
 var assetManager = AssetManager.getInstance();
 assetManager.loadObject(
   "MineralFactory",
-  "./objects/Buildings/MineralFactory/MineralFactory.obj",
-  "./objects/Buildings/MineralFactory/MineralFactory.mtl"
+  "./objects/Buildings/MineralFactory/Mine.obj",
+  "./objects/Buildings/MineralFactory/Mine.mtl"
 );
 assetManager.loadObject(
   "MineralIcon",
-  "./objects/Items/Mineral/Mineral.obj",
-  "./objects/Items/Mineral/Mineral.mtl"
+  "./objects/Items/Exclamation/Exclamation.obj",
+  "./objects/Items/Exclamation/Exclamation.mtl"
 );
 
 class MineralFactory extends Building {
