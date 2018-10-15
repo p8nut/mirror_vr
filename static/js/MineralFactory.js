@@ -14,7 +14,7 @@ class MineralFactory extends Building {
   constructor(univers) {
     super(
       univers,
-      new THREE.BoxGeometry(0.05, 0.05, 0.05),
+      new THREE.BoxGeometry(1, 1, 1),
       new THREE.MeshLambertMaterial({ color: 0x00ff00 })
     );
     this.model = assetManager.getObject("MineralFactory").clone();
@@ -27,15 +27,18 @@ class MineralFactory extends Building {
     this.iconModel.position.z = -0.2;
     this.add(this.iconModel);
 
-    this.buildingDelay = 4;
+    this.buildingDelay = 4000;
     this.maxGain = 30;
     this.lastHarvest = 0;
-    this.harvestCooldown = 5;
+    this.harvestCooldown = 5000;
+    
+    univers.main_base.population += 10;
   }
   isHarvestable(now) {
     return this.lastHarvest + this.harvestCooldown < now;
   }
   mouseClick(event, elapsedTime) {
+	  console.log(elapsedTime);
     if (this.isHarvestable(elapsedTime)) {
       this.univers.main_base.minerals += this.maxGain;
       this.lastHarvest = elapsedTime;
