@@ -61,9 +61,17 @@ class IHM {
   }
   update(elapsedTime, delta) {
     this.handle_zoom();
+    this.handle_timer(elapsedTime);
   }
   handle_zoom() {
     var ratio = this.options.zoom / 100 + 0.7;
     this.univers.planet.scale.set(ratio, ratio, ratio);
+  }
+  handle_timer(elapsedTime) {
+	  var timerbox = document.getElementById("timerbox");
+	  var time = 300 - (elapsedTime / 1000);
+	  if (parseInt(time) > 0)
+		  timerbox.innerHTML = "Comet incoming!<br>" + parseInt(time / 60) + ":" + parseInt(time % 60 / 10) + parseInt(time % 60 % 10);
+	else   timerbox.innerHTML = "Comet incoming!<br>0:00";
   }
 }
