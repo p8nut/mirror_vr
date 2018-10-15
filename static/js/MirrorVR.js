@@ -2,10 +2,9 @@ class MirrorVR{
     constructor(canvas) {
 	this.canvas = canvas
 	
-	this.clock = new THREE.Clock();
 	const oldTime = this.oldTime = 0;
-	const elapsedTime = this.elapsedTime = 0;//this.clock.getElapsedTime();
-	const deltaTime = this.deltaTime = 0;//this.clock.getDelta();
+	const elapsedTime = this.elapsedTime = 0;
+	const deltaTime = this.deltaTime = 0;
 
 	//////////////// BEGIN RENDRER /////////////
 	const renderer = this.renderer = new Renderer(canvas)
@@ -23,16 +22,13 @@ class MirrorVR{
 	const hud = this.hud = new HUD(canvas, univers);
 	const ihm = this.ihm = new IHM(univers);
 	//////////////// END HUD ///////////////////
-	//////////////// BEGIN POPUP ///////////////
-	const popup = this.popup = new PopUp(this);
-	//////////////// END POPUP /////////////////
     }
     
 
     update() {
 	const oldTime = this.oldTime = this.elapsedTime;
-	const elapsedTime = this.elapsedTime = performance.now()//this.clock.getElapsedTime();
-	const deltaTime = this.deltaTime = this.elapsedTime - this.oldTime; //this.clock.getDelta();
+	const elapsedTime = this.elapsedTime = performance.now();
+	const deltaTime = this.deltaTime = this.elapsedTime - this.oldTime;
 	
 	this.univers.update(elapsedTime, deltaTime);
 	this.hud.update(elapsedTime, deltaTime);
@@ -60,9 +56,8 @@ class MirrorVR{
 
     mouseClick(event) {
 	event.preventDefault()
-
 	if (this.hud.mouseClick(event) !== true) {
-	    this.univers.mouseClick(event, this.elapesdTime);
+	    this.univers.mouseClick(event, this.elapsedTime);
 	}
     }
 

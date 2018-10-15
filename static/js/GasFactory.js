@@ -27,10 +27,12 @@ class GasFactory extends Building {
     this.iconModel.position.z = -0.2;
     this.add(this.iconModel);
 
-    this.buildingDelay = 2;
+    this.buildingDelay = 2000;
     this.maxGain = 10;
     this.lastHarvest = 0;
-    this.harvestCooldown = 3;
+    this.harvestCooldown = 3000;
+    
+    univers.main_base.population += 10;
   }
   isHarvestable(now) {
     return this.lastHarvest + this.harvestCooldown < now;

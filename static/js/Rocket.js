@@ -16,9 +16,18 @@ class Rocket extends Building {
     this.model.rotation.y = Math.PI;
     this.add(this.model);
     
-    this.buildingDelay = 5;
+    this.buildingDelay = 5000;
     this.maxGain = 15;
     this.lastHarvest = 0;
+    
+    univers.main_base.population += 30;
+  }
+  isLaunchable () {
+	  return this.univers.main_base.gas >= Rocket.costGas
+  }
+  update () {
+	  if (this.isLaunchable())
+		; //popup.send("Rocket is ready for launch");
   }
   mouseClick(event, elapsedTime) {
     if (this.univers.main_base.gas >= Rocket.costGas)

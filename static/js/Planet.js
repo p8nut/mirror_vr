@@ -1,6 +1,8 @@
 var assetManager = AssetManager.getInstance()
-
 assetManager.loadTexture('moon','textures/moon.jpg');
+
+var popup = PopUp.getInstance();
+var buildingType = null;
 
 class Planet extends BasicEntity {
     constructor(univers) {
@@ -102,9 +104,10 @@ class Planet extends BasicEntity {
 	    }
 	}
 	if (buildingType != null) {
-		if (buildingType.costMineral > this.main_base.minerals)
+		if (buildingType.costMineral > this.main_base.minerals) {
+			popup.send("Insufficient resources");
 			return true;
-		
+		}
 		let building = new buildingType(this);
 		this.main_base.minerals -= buildingType.costMineral;
 		building.position.copy(vertice)
@@ -114,4 +117,3 @@ class Planet extends BasicEntity {
 	return true;
     }
 }
-var buildingType = null;

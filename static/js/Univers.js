@@ -9,7 +9,7 @@ class Univers extends THREE.Scene{
 	this.raycaster = new THREE.Raycaster()
 	
 	//////////////// BEGIN PLANET //////////////
-	const planet = this.planet = new Planet(this)
+	const planet = this.planet = new Planet(this);
 	planet.position.set(0,1,0);
 
 	const main_base = this.main_base = this.planet.main_base;
