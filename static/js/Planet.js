@@ -1,5 +1,5 @@
 var assetManager = AssetManager.getInstance();
-assetManager.loadTexture("moon", "textures/moon.jpg");
+assetManager.loadTexture("venus", "textures/venus.jpg");
 
 var popup = PopUp.getInstance();
 var buildingType = null;
@@ -11,7 +11,7 @@ class Planet extends BasicEntity {
     const packaging = this.packaging = new THREE.Mesh(
       Planet.createLayerMesh(size),
       new THREE.MeshLambertMaterial({
-	map: assetManager.getTexture("moon"),
+	map: assetManager.getTexture("venus"),
 	color: 0xff8800,
 	side: THREE.DoubleSide,
 	polygonOffset: true,
