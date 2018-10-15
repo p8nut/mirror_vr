@@ -9,6 +9,11 @@ assetManager.loadObject(
   "./objects/Items/Exclamation/Exclamation.obj",
   "./objects/Items/Exclamation/Exclamation.mtl"
 );
+assetManager.loadObject(
+  "MineralResource",
+  "./objects/Buildings/MineralResource/Minerals.obj",
+  "./objects/Buildings/MineralResource/Minerals.mtl"
+);
 
 class MineralFactory extends Building {
   constructor(univers) {
@@ -17,7 +22,8 @@ class MineralFactory extends Building {
       new THREE.BoxGeometry(1, 1, 1),
       new THREE.MeshLambertMaterial({ color: 0x00ff00 })
     );
-    this.model = assetManager.getObject("MineralFactory").clone();
+    this.univers = univers;
+    this.model = assetManager.getObject("MineralResource").clone();
     this.model.scale.set(0.002, 0.002, 0.002);
     this.model.rotation.y = Math.PI;
     this.add(this.model);
@@ -26,22 +32,21 @@ class MineralFactory extends Building {
     this.iconModel.rotation.y = Math.PI;
     this.iconModel.position.z = -0.2;
     this.add(this.iconModel);
-
+    this.isFactory = false;
     this.buildingDelay = 4000;
     this.maxGain = 30;
     this.lastHarvest = 0;
     this.harvestCooldown = 5000;
-    
-    univers.main_base.population += 10;
   }
-  isHarvestable(now) {
-    return this.lastHarvest + this.harvestCooldown < now;
-  }
+  
   mouseClick(event, elapsedTime) {
-	  console.log(elapsedTime);
     if (this.isHarvestable(elapsedTime)) {
       this.univers.main_base.minerals += this.maxGain;
       this.lastHarvest = elapsedTime;
+    } else if (this.isFactory == false &&
+      buildingType == MineralFactory &&
+      this.univers.main_base.minerals >= buildingType.costMineral) {
+        super.buildFactory("MineralFactory");
     }
   }
   update(elapsedTime, delta) {

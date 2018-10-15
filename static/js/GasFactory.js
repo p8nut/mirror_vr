@@ -26,7 +26,7 @@ class GasFactory extends Building {
     this.iconModel.rotation.y = Math.PI;
     this.iconModel.position.z = -0.2;
     this.add(this.iconModel);
-
+    this.isFactory = false;
     this.buildingDelay = 2000;
     this.maxGain = 10;
     this.lastHarvest = 0;
@@ -34,18 +34,22 @@ class GasFactory extends Building {
     
     univers.main_base.population += 10;
   }
-  isHarvestable(now) {
-    return this.lastHarvest + this.harvestCooldown < now;
-  }
+
   mouseClick(event, elapsedTime) {
     if (this.isHarvestable(elapsedTime)) {
       this.univers.main_base.gas += this.maxGain;
       this.lastHarvest = elapsedTime;
+    } else if (this.isFactory == false &&
+      buildingType == GasFactory &&
+      this.univers.main_base.minerals >= buildingType.costMineral) {
+        super.buildFactory("GasFactory");
     }
   }
   update(elapsedTime, delta) {
-    if (this.isHarvestable(elapsedTime)) this.iconModel.visible = true;
-    else this.iconModel.visible = false;
+    if (this.isHarvestable(elapsedTime))
+      this.iconModel.visible = true;
+    else
+      this.iconModel.visible = false;
   }
   static get costMineral() {
     return 20;

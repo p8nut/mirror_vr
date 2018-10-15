@@ -10,6 +10,22 @@ class Building extends BasicEntity {
     this.lastHarvest = 0;
     this.harvestCooldown = 0;
   };
+  isHarvestable(now) {
+    return this.lastHarvest + this.harvestCooldown < now && this.isFactory == true;
+  }
+  
+  buildFactory(meshName){
+    this.isFactory = true;
+    this.remove(this.model)
+    this.model = assetManager.getObject(meshName).clone();
+    this.model.scale.set(0.002, 0.002, 0.002);
+    this.model.rotation.y = Math.PI;
+    this.univers.main_base.minerals -= buildingType.costMineral;
+    buildingType = null;
+    this.univers.main_base.population += 10;
+    this.add(this.model);
+  }
+
   mouseClick(event, elapsedTime) {
     return true;
   };

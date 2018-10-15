@@ -12,6 +12,7 @@ class MineralResource extends BasicEntity {
       new THREE.BoxGeometry(0.05, 0.05, 0.05),
       new THREE.MeshLambertMaterial({ color: 0xffff00 })
     );
+    this.univers = univers;
     /*
 	var particleSystem = this.particleSystem = new THREE.GPUParticleSystem( {
 	    maxParticles: 25
@@ -44,7 +45,8 @@ class MineralResource extends BasicEntity {
   }
 
   mouseClick(event, elapsedTime) {
-    return true;
+    //super.mouseClick(event, elapsedTime);
+    //this.remove(this.model);
   }
 
   update(elapsedTime, delta) {

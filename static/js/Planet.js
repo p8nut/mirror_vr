@@ -33,15 +33,15 @@ class Planet extends BasicEntity {
 	vertices.forEach(vertice => {
 	    let resource = null;
 	    if (v % 3) {
-		resource = new MineralResource(planet);
+		resource = new MineralFactory(planet);
 	    } else {
-		resource = new GasResource(planet);
+		resource = new GasFactory(planet);
 	    }
 	    v++;
             resource.position.copy(vertice)
 	    resource.lookAt(planet.position);
 	})
-    }
+	}
     
     static createLayers(planet, size) {
 	planet.add(new THREE.Mesh(
@@ -91,8 +91,8 @@ class Planet extends BasicEntity {
 	for (let i = 0; i < vertices.length; i++) {
             let distance = vertices[i].distanceTo(local_intersect);
             if (vertice === null || distance < min) {
-		min = distance;
-		vertice = vertices[i];
+				min = distance;
+				vertice = vertices[i];
             }
 	}
 
@@ -106,14 +106,22 @@ class Planet extends BasicEntity {
 	if (buildingType != null) {
 		if (buildingType.costMineral > this.main_base.minerals) {
 			popup.send("Insufficient resources");
-			return true;
+			return (true);
+		}
+		if (buildingType == MineralFactory) {
+			popup.send("Mineral factory must be placed on rock formation")
+			return (true)
+		}
+		if (buildingType == MineralFactory) {
+			popup.send("Gas factory must be placed on gas geyser")
+			return (true)
 		}
 		let building = new buildingType(this);
 		this.main_base.minerals -= buildingType.costMineral;
 		building.position.copy(vertice)
 		building.lookAt(this.position)
 		buildingType = null;
-	}
+		}
 	return true;
     }
 }
