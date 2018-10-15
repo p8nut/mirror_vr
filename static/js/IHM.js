@@ -10,19 +10,19 @@ class IHM {
 
     this.stat
       .add(base, "population", base.population)
-      .name("Population")
+      .name("<span class=\"resHud\"><img class=\"LogoHud\" src=\"./objects/Logo/Population.png\"></span> Population")
       .listen();
     this.stat
       .add(base, "food", base.food)
-      .name("Food")
+      .name("<span class=\"resHud\"><img class=\"LogoHud\" src=\"./objects/Logo/Food.png\"></span> Food")
       .listen();
     this.stat
       .add(base, "minerals", base.minerals)
-      .name("Minerals")
+      .name("<span class=\"resHud\"><img class=\"LogoHud\" src=\"./objects/Logo/Rock.png\"></span>Mine")
       .listen();
     this.stat
       .add(base, "gas", base.gas)
-      .name("Gas")
+      .name("<span class=\"resHud\"><img class=\"LogoHud\" src=\"./objects/Logo/Rock.png\"></span> Gas")
       .listen();
     this.stat.domElement.style.pointerEvents = "none";
 
@@ -48,10 +48,10 @@ class IHM {
     });
 
     var build = this.ihm.addFolder("Build");
-    build.add(options, "add_mineral_factory").name("Mineral factory <span class=\"resCost\">" + MineralFactory.costMineral + " <img class=\"Logo\" src=\"./objects/Logo/Rock.png\"></span>");
-    build.add(options, "add_gas_factory").name("Gas factory <span class=\"resCost\">" + GasFactory.costMineral + " <img class=\"Logo\" src=\"./objects/Logo/Rock.png\"></span>");
-    build.add(options, "add_farm").name("Farm <span class=\"resCost\">" + Farm.costMineral + " <img class=\"Logo\" src=\"./objects/Logo/Rock.png\"></span>");
-    build.add(options, "add_rocket").name("Rocket <span class=\"resCost\">" + Rocket.costMineral + " <img class=\"Logo\" src=\"./objects/Logo/Rock.png\"></span>");
+    build.add(options, "add_mineral_factory").name("Mineral factory <span class=\"resCost\">" + MineralFactory.costMineral + " <img class=\"LogoIhm\" src=\"./objects/Logo/Rock.png\"></span>");
+    build.add(options, "add_gas_factory").name("Gas factory <span class=\"resCost\">" + GasFactory.costMineral + " <img class=\"LogoIhm\" src=\"./objects/Logo/Rock.png\"></span>");
+    build.add(options, "add_farm").name("Farm <span class=\"resCost\">" + Farm.costMineral + " <img class=\"LogoIhm\" src=\"./objects/Logo/Rock.png\"></span>");
+    build.add(options, "add_rocket").name("Rocket <span class=\"resCost\">" + Rocket.costMineral + " <img class=\"LogoIhm\" src=\"./objects/Logo/Gas.png\"></span>");
     build.open();
 
     var opt = this.ihm.addFolder("Options");

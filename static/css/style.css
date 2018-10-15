@@ -16,10 +16,19 @@ body {
 #ihm {
   position: relative;
   float: right;
-  margin-right: 0px;
+  margin-right: 10px;
+}
+
+.etst {
+  float:left;
+
 }
 
 .resName{
+	float:left;
+}
+
+.resHud{
 	float:left;
 }
 
@@ -27,14 +36,35 @@ body {
 	float:right;
 }
 
+#stat{
+  width:200px !important;
+}
+
+.property-name{
+  width: 60% !important;
+}
+
+.c{
+  float:right !important;
+  width: 35% !important;
+}
+
 .dg .cr.function, .dg .cr.function .property-name, .dg .cr.function *, .dg .cr.boolean, .dg .cr.boolean * {
     width: auto;
     height: 30px;
 }
 
-.Logo{
-    width: 25px!important;
-    height: 25px!important;
+.LogoHud {
+  width: 25px !important; 
+  height: 25px !important;
+  padding-top: 3px;
+  float: left;
+  margin-right: 10px;
+}
+
+.LogoIhm {
+    width: 25px !important; 
+    height: 25px !important;
     padding-top: 3px;
     float: right;
     margin-left: 10px;

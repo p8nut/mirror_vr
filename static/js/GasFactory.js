@@ -6,8 +6,8 @@ assetManager.loadObject(
 );
 assetManager.loadObject(
   "GasIcon",
-  "./objects/Items/Gas/Gas.obj",
-  "./objects/Items/Gas/Gas.mtl"
+  "./objects/Items/Exclamation/Exclamation.obj",
+  "./objects/Items/Exclamation/Exclamation.mtl"
 );
 
 class GasFactory extends Building {
