@@ -12,11 +12,7 @@ assetManager.loadObject(
 
 class Farm extends Building {
   constructor(univers) {
-    super(
-      univers,
-      new THREE.BoxGeometry(0.05, 0.05, 0.05),
-      new THREE.MeshLambertMaterial({ color: 0x00ff00 })
-    );
+    super(univers, new THREE.BoxGeometry(0.05, 0.05, 0.05));
     this.model = assetManager.getObject("Farm").clone();
     this.model.scale.set(0.002, 0.002, 0.002);
     this.model.rotation.y = Math.PI;
@@ -31,7 +27,7 @@ class Farm extends Building {
     this.maxGain = 15;
     this.lastHarvest = 0;
     this.harvestCooldown = 4000;
-    
+
     univers.main_base.population += 10;
   }
   isHarvestable(now) {

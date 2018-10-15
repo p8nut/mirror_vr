@@ -12,11 +12,7 @@ assetManager.loadObject(
 
 class GasFactory extends Building {
   constructor(univers) {
-    super(
-      univers,
-      new THREE.BoxGeometry(0.05, 0.05, 0.05),
-      new THREE.MeshLambertMaterial({ color: 0x00ff00 })
-    );
+    super(univers, new THREE.BoxGeometry(0.05, 0.05, 0.05));
     this.model = assetManager.getObject("GasFactory").clone();
     this.model.scale.set(0.002, 0.002, 0.002);
     this.model.rotation.y = Math.PI;
@@ -31,10 +27,10 @@ class GasFactory extends Building {
     this.maxGain = 10;
     this.lastHarvest = 0;
     this.harvestCooldown = 3000;
-    
+
     univers.main_base.population += 10;
   }
-
+  
   mouseClick(event, elapsedTime) {
     if (this.isHarvestable(elapsedTime)) {
       this.univers.main_base.gas += this.maxGain;

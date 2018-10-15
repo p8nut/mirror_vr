@@ -17,13 +17,9 @@ assetManager.loadObject(
 
 class MineralFactory extends Building {
   constructor(univers) {
-    super(
-      univers,
-      new THREE.BoxGeometry(1, 1, 1),
-      new THREE.MeshLambertMaterial({ color: 0x00ff00 })
-    );
-    this.univers = univers;
+    super(univers, new THREE.BoxGeometry(10, 10, 10));
     this.model = assetManager.getObject("MineralResource").clone();
+    this.univers = univers;
     this.model.scale.set(0.002, 0.002, 0.002);
     this.model.rotation.y = Math.PI;
     this.add(this.model);

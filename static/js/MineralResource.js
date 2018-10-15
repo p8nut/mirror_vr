@@ -7,12 +7,10 @@ assetManager.loadObject(
 
 class MineralResource extends BasicEntity {
   constructor(univers) {
-    super(
-      univers,
-      new THREE.BoxGeometry(0.05, 0.05, 0.05),
-      new THREE.MeshLambertMaterial({ color: 0xffff00 })
-    );
+    
+  super(univers, new THREE.BoxGeometry(0.05, 0.05, 0.05));
     this.univers = univers;
+
     /*
 	var particleSystem = this.particleSystem = new THREE.GPUParticleSystem( {
 	    maxParticles: 25

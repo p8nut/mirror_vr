@@ -10,9 +10,7 @@ class MainBase extends Building {
     super(univers);
     const tower = new BasicEntity(
       this,
-      new THREE.IcosahedronGeometry(0.035, 1),
-      new THREE.MeshPhongMaterial({ color: 0xff0000 })
-    );
+      new THREE.IcosahedronGeometry(0.035, 1));
     this.model = assetManager.getObject("MainBase").clone();
     this.model.scale.set(0.002, 0.002, 0.002);
     this.model.rotation.y = Math.PI;
@@ -24,7 +22,6 @@ class MainBase extends Building {
   }
 
   mouseClick(event, elapsedTime) {
-    console.log("MainBase clicked");
     return true;
   }
 }
