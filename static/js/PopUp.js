@@ -1,8 +1,8 @@
 class PopUp {
   constructor() {
     this.msgbox = document.getElementById("msgbox");
-	this.msgbox.onclick = ()=>{this.close()};
-}
+    //this.msgbox.onclick = ()=>{this.close()};
+  }
   send(text) {
     this.msgbox.innerHTML = text;
     this.msgbox.style.display = "block";
@@ -10,7 +10,7 @@ class PopUp {
   }
   animatePopUp() {
     var pos = -250;
-    this.msgbox.style.left = pos + "px"
+    this.msgbox.style.left = pos + "px";
     var id = setInterval(frame, 4);
     function frame() {
       if (pos == 0) {
