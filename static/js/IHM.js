@@ -22,7 +22,7 @@ class IHM {
       .listen();
     this.stat
       .add(base, "gas", base.gas)
-      .name("<span class=\"resHud\"><img class=\"LogoHud\" src=\"./objects/Logo/Rock.png\"></span>Gas")
+      .name("<span class=\"resHud\"><img class=\"LogoHud\" src=\"./objects/Logo/Gas.png\"></span>Gas")
       .listen();
     this.stat.domElement.style.pointerEvents = "none";
 
