@@ -1,14 +1,17 @@
 class PopUp {
   constructor() {
     this.msgbox = document.getElementById("msgbox");
-    //this.msgbox.onclick = ()=>{this.close()};
+    this.msgbox.onclick = () => {
+      this.close();
+    };
   }
-  send(text) {
+  send(text, time = 3000) {
+    if (this.timeout) clearTimeout(this.timeout);
     this.msgbox.innerHTML = text;
     this.msgbox.style.display = "block";
-    this.animatePopUp();
+    this.animatePopUp(time);
   }
-  animatePopUp() {
+  animatePopUp(time) {
     var pos = -250;
     this.msgbox.style.left = pos + "px";
     var id = setInterval(frame, 4);
@@ -20,9 +23,10 @@ class PopUp {
         this.msgbox.style.left = pos + "px";
       }
     }
-    window.setTimeout(this.close, 3000);
+    this.timeout = setTimeout(this.close, time);
   }
   close() {
+    if (this.timeout) clearTimeout(this.timeout);
     this.msgbox.style.display = "none";
   }
   static getInstance() {
