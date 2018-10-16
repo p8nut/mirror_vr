@@ -19,6 +19,14 @@ body {
   margin-right: 10px;
 }
 
+.dg .cr.function:hover, .dg .cr.boolean:hover{
+  background-color: #555555!important;
+}
+
+.dg .cr.function, .dg .cr.number {
+  border-left: 3px solid #c8c8c8 !important;
+}
+
 .etst {
   float:left;
 

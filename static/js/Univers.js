@@ -45,7 +45,7 @@ class Univers extends THREE.Scene {
       farPlane
     );
   }
-
+  
   resize() {
     const camera = this.camera;
 

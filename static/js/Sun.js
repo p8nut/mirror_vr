@@ -1,6 +1,6 @@
 class Sun extends BasicEntity {
   constructor(univers) {
-    super(univers, new THREE.CubeGeometry(0.1, 16, 8));
+    super(univers, new THREE.CubeGeometry(0.5, 0.5, 0.5));
     // sun.position.y = - 700000;
     // sun.visible = false;
     this.add(new THREE.PointLight(0xf0f0f0, 10, 100000));
@@ -21,5 +21,8 @@ class Sun extends BasicEntity {
     lensflare.addElement( new THREE.LensflareElement( this.textureFlare3, 120, 0.9 ) );
     lensflare.addElement( new THREE.LensflareElement( this.textureFlare3, 70, 1 ) );
     light.add( lensflare );
+  }
+  mouseClick(event, elapsedTime) {
+    popup.send("IT IS WAY TOO HOT, DO NOT CLICK THE SUN !!");
   }
 }

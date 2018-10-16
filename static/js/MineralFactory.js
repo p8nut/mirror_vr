@@ -37,7 +37,6 @@ class MineralFactory extends Building {
 
     this.univers.main_base.gas += 400;
     this.univers.main_base.minerals += 400;
-
   }
   
   mouseClick(event, elapsedTime) {
