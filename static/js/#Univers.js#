@@ -8,10 +8,12 @@ class Univers extends THREE.Scene {
     this.canvas = canvas;
     this.raycaster = new THREE.Raycaster();
 
+
     
     //////////////// BEGIN PLANET //////////////
     const planet = (this.planet = new Planet(this));
     planet.position.set(0, 1, 0);
+
     const main_base = (this.main_base = this.planet.main_base);
     //////////////// END PLANET //////////////
 
@@ -30,6 +32,7 @@ class Univers extends THREE.Scene {
     const camera = (this.camera = Univers.buildCamera(this.canvas));
     controller.add(camera);
     camera.lookAt(this.planet.position);
+
     //////////////// END CAMERA ////////////////
   }
 
@@ -85,9 +88,14 @@ class Univers extends THREE.Scene {
     m.x = (event.clientX / window.innerWidth) * 2 - 1;
     m.y = -(event.clientY / window.innerHeight) * 2 + 1;
 
-    world.raycaster.setFromCamera(m, world.camera);
-    let intersects = world.raycaster.intersectObjects(world.children, true);
-
+    static findIntersects(world, event) {
+	var intersect = null;
+	let m = new THREE.Vector2();
+	m.x = ( event.clientX / window.innerWidth ) * 2 - 1;
+	m.y = - ( event.clientY / window.innerHeight ) * 2 + 1;
+	
+	world.raycaster.setFromCamera(m, world.camera);
+	let intersects = world.raycaster.intersectObjects( world.children, true );
     return intersects;
   }
 }

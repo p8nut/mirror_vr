@@ -1,16 +1,25 @@
 class Sun extends BasicEntity {
   constructor(univers) {
-    super(univers, new THREE.SphereBufferGeometry(0.1, 16, 8));
+    super(univers, new THREE.CubeGeometry(0.1, 16, 8));
     // sun.position.y = - 700000;
     // sun.visible = false;
-    (this.turbidity = 10),
-      (this.rayleigh = 2),
-      (this.mieCoefficient = 0.005),
-      (this.mieDirectionalG = 0.8),
-      (this.luminance = 1),
-      (this.inclination = 0.49), // elevation / inclinationthis.
-      (this.azimuth = 0.25), // Facing front,this.this.
-      (this.sun = !true);
     this.add(new THREE.PointLight(0xf0f0f0, 10, 100000));
+    
+    this.textureLoader = new THREE.TextureLoader();
+    this.textureFlare0 = this.textureLoader.load( 'objects/Lensflares/lensflare0.png' );
+    this.textureFlare3 = this.textureLoader.load( 'objects/Lensflares/lensflare3.png' );
+
+    var light = new THREE.PointLight( 0xffffff, 1.5, 2000 );
+    light.color.setHSL( 0.08, 0.8, 0.5 );
+    light.position.set( 0, 0, -1000 );
+    this.add( light );
+
+    var lensflare = new THREE.Lensflare();
+    lensflare.addElement( new THREE.LensflareElement( this.textureFlare0, 700, 0, light.color ) );
+    lensflare.addElement( new THREE.LensflareElement( this.textureFlare3, 60, 0.6 ) );
+    lensflare.addElement( new THREE.LensflareElement( this.textureFlare3, 70, 0.7 ) );
+    lensflare.addElement( new THREE.LensflareElement( this.textureFlare3, 120, 0.9 ) );
+    lensflare.addElement( new THREE.LensflareElement( this.textureFlare3, 70, 1 ) );
+    light.add( lensflare );
   }
 }

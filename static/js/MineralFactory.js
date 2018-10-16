@@ -22,6 +22,7 @@ class MineralFactory extends Building {
     this.univers = univers;
     this.model.scale.set(0.002, 0.002, 0.002);
     this.model.rotation.y = Math.PI;
+    this.model.position.z = -0.02;
     this.add(this.model);
     this.iconModel = assetManager.getObject("MineralIcon").clone();
     this.iconModel.scale.set(0.002, 0.002, 0.002);

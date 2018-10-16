@@ -10,19 +10,19 @@ class IHM {
 
     this.stat
       .add(base, "population", base.population)
-      .name("<span class=\"resHud\"><img class=\"LogoHud\" src=\"./objects/Logo/Population.png\"></span> Population")
+      .name("<span class=\"resHud\"><img class=\"LogoHud\" src=\"./objects/Logo/Population.png\"></span>Population")
       .listen();
     this.stat
       .add(base, "food", base.food)
-      .name("<span class=\"resHud\"><img class=\"LogoHud\" src=\"./objects/Logo/Food.png\"></span> Food")
+      .name("<span class=\"resHud\"><img class=\"LogoHud\" src=\"./objects/Logo/Food.png\"></span>Food")
       .listen();
     this.stat
       .add(base, "minerals", base.minerals)
-      .name("<span class=\"resHud\"><img class=\"LogoHud\" src=\"./objects/Logo/Rock.png\"></span>Mine")
+      .name("<span class=\"resHud\"><img class=\"LogoHud\" src=\"./objects/Logo/Rock.png\"></span>Minerals")
       .listen();
     this.stat
       .add(base, "gas", base.gas)
-      .name("<span class=\"resHud\"><img class=\"LogoHud\" src=\"./objects/Logo/Gas.png\"></span> Gas")
+      .name("<span class=\"resHud\"><img class=\"LogoHud\" src=\"./objects/Logo/Gas.png\"></span>Gas")
       .listen();
     this.stat.domElement.style.pointerEvents = "none";
 
@@ -71,7 +71,7 @@ class IHM {
 	  var timerbox = document.getElementById("timerbox");
 	  var time = 300 - (elapsedTime / 1000);
 	  if (parseInt(time) > 0)
-		  timerbox.innerHTML = "Comet incoming!<br>" + parseInt(time / 60) + ":" + parseInt(time % 60 / 10) + parseInt(time % 60 % 10);
-	else   timerbox.innerHTML = "Comet incoming!<br>0:00";
+		  timerbox.innerHTML = "<br>Comet incoming!<br>" + parseInt(time / 60) + ":" + parseInt(time % 60 / 10) + parseInt(time % 60 % 10) + "<br><br>";
+	else   timerbox.innerHTML = "<br>Comet incoming!<br>0:00<br>";
   }
 }
