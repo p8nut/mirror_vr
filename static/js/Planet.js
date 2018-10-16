@@ -8,16 +8,16 @@ class Planet extends BasicEntity {
   constructor(univers) {
     const size = 1;
     super(univers, new THREE.IcosahedronGeometry(size, 4));
-    const packaging = this.packaging = new THREE.Mesh(
+    const packaging = (this.packaging = new THREE.Mesh(
       Planet.createLayerMesh(size),
       new THREE.MeshLambertMaterial({
-	map: assetManager.getTexture("moon"),
-	color: 0xff8800,
-	side: THREE.DoubleSide,
-	polygonOffset: true,
-	polygonOffsetFactor: 0
+        map: assetManager.getTexture("moon"),
+				color: 0xff8800,
+        side: THREE.DoubleSide,
+        polygonOffset: true,
+        polygonOffsetFactor: 0
       })
-    );
+		));
     this.add(packaging);
     Planet.createLayers(this, size);
     Planet.addResourcesAndBuilding(this);
@@ -41,7 +41,8 @@ class Planet extends BasicEntity {
       v++;
       resource.position.copy(vertice);
       resource.lookAt(planet.position);
-    });
+		});
+		console.log('mdr')
   }
 
   static createLayers(planet, size) {

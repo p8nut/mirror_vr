@@ -8,9 +8,6 @@ assetManager.loadObject(
 class MainBase extends Building {
   constructor(univers) {
     super(univers);
-    const tower = new BasicEntity(
-      this,
-      new THREE.IcosahedronGeometry(0.035, 1));
     this.model = assetManager.getObject("MainBase").clone();
     this.model.scale.set(0.002, 0.002, 0.002);
     this.model.rotation.y = Math.PI;

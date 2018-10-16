@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title>three.js - gpu particle system</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+	<style>
+		body {
+			font-family: Monospace;
+			background-color: #f0f0f0;
+			margin: 0px;
+			overflow: hidden;
+		}
+
+		#info {
+			position: absolute;
+			top: 0px;
+			width: 100%;
+			padding: 5px;
+			font-family: Monospace;
+			font-size: 13px;
+			text-align: center;
+			color: #ffffff;
+		}
+
+		a {
+			color: #ffffff;
+		}
+	</style>
+</head>
+
+<body>
+
+	<div id="container"></div>
+	<script src="../node_modules/three/build/three.js"></script>
+	<script src="../node_modules/dat.gui/build/dat.gui.min.js"></script>
+	<script src="./three-utils/GPUParticleSystem.js"></script>
+
+	<script>
+		var camera, tick = 0,
+			scene, renderer, clock = new THREE.Clock(),
+			container, gui = new dat.GUI({ width: 350 }),
+			options, spawnerOptions, particleSystem;
+
+		var stats;
+
+		init();
+		animate();
+
+		function init() {
+			container = document.getElementById('container');
+			camera = new THREE.PerspectiveCamera(28, window.innerWidth / window.innerHeight, 1, 10000);
+			camera.position.z = 100;
+			scene = new THREE.Scene();
+			particleSystem = new THREE.GPUParticleSystem({
+				maxParticles: 250000
+			});
+			scene.add(particleSystem);
+			options = {
+				position: new THREE.Vector3(0, 0, 0),
+				velocity: new THREE.Vector3(),
+				velocityRandomness: 1,
+				color: 0xffff00,
+				colorRandomness: .2,
+				turbulence: .5,
+				lifetime: 0.8,
+				size: 5,
+				sizeRandomness: 1
+			};
+			spawnerOptions = {
+				spawnRate: 15000,
+				horizontalSpeed: 1.5,
+				verticalSpeed: 1.33,
+				timeScale: 0.1
+			};
+			gui.add(options, "velocityRandomness", 0, 3);
+			gui.add(options, "positionRandomness", 0, 3);
+			gui.add(options, "size", 1, 20);
+			gui.add(options, "sizeRandomness", 0, 25);
+			gui.add(options, "colorRandomness", 0, 1);
+			gui.add(options, "lifetime", .1, 10);
+			gui.add(options, "turbulence", 0, 1);
+			gui.add(spawnerOptions, "spawnRate", 10, 30000);
+			gui.add(spawnerOptions, "timeScale", -1, 1);
+			renderer = new THREE.WebGLRenderer();
+			renderer.setPixelRatio(window.devicePixelRatio);
+			renderer.setSize(window.innerWidth, window.innerHeight);
+			container.appendChild(renderer.domElement);
+		}
+		function animate() {
+			requestAnimationFrame(animate);
+			var delta = clock.getDelta() * spawnerOptions.timeScale;
+			tick += delta;
+			if (tick < 0) tick = 0;
+			if (delta > 0) {
+				for (var x = 0; x < spawnerOptions.spawnRate * delta; x++) {
+					particleSystem.spawnParticle(options);
+				}
+			}
+			particleSystem.update(tick);
+			render();
+		}
+
+		function render() {
+			renderer.render(scene, camera);
+		}
+	</script>
+</body>
+
+</html>

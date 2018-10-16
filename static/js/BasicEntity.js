@@ -1,6 +1,6 @@
 class BasicEntity extends THREE.Mesh {
   constructor(univers, mesh) {
-    const texture = new THREE.MeshBasicMaterial({visible: false});
+    const texture = new THREE.MeshBasicMaterial({wireframe: true});
     super(mesh, texture);
     univers.add(this);
     this.univers = univers;
