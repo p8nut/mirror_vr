@@ -1,4 +1,3 @@
-const openvr = require("openvr");
 const express = require('express')
 const app = express()
 
@@ -9,6 +8,7 @@ app.use('/modules', express.static('node_modules'));
 
 const server = app.listen(8080)
 try {
+	const openvr = require("openvr");
     openvr.k_unMaxTrackedDeviceCount = 64;
     var vr = openvr.VR_Init(openvr.EVRApplicationType.Background)
 } catch(e) {
