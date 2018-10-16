@@ -24,15 +24,15 @@ class MainBase extends Building {
     this.gameOver = false;
   }
   feedPopulation() {
-    var p = this.univers.main_base.population;
-    var f = this.univers.main_base.food;
-    if (p <= f) f -= p;
+    var pop = this.univers.main_base.population;
+    var food = this.univers.main_base.food;
+    if (pop <= food) food -= pop;
     else {
-      p -= p - f;
-      f = 0;
+      pop -= pop - food;
+      food = 0;
     }
-    this.univers.main_base.population = p;
-    this.univers.main_base.food = f;
+    this.univers.main_base.population = pop;
+    this.univers.main_base.food = food;
   }
   isFoodTime(now) {
     return this.lastEat + this.eatCooldown < now;

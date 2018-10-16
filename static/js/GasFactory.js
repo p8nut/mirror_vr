@@ -23,7 +23,6 @@ class GasFactory extends Building {
     this.iconModel.position.z = -0.2;
     this.add(this.iconModel);
     this.isFactory = false;
-    this.buildingDelay = 2000;
     this.maxGain = 10;
     this.lastHarvest = 0;
     this.harvestCooldown = 3000;
