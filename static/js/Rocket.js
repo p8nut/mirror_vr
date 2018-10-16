@@ -22,11 +22,7 @@ class Rocket extends Building {
   isLaunchable() {
     return this.univers.main_base.gas >= Rocket.costGas;
   }
-  update() {
-    if (this.isLaunchable() && this.popuped == false) {
-      popup.send("Rocket is ready for takeoff !");
-      this.popuped = true;
-    }
+  update(elapsedTime, delta) {
     if (this.isLaunched) {
       this.model.position.x += this.speedValue;
       this.speedValue += 0.0001;

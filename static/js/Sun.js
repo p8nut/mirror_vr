@@ -23,6 +23,6 @@ class Sun extends BasicEntity {
     light.add( lensflare );
 	}
 	mouseClick(event, elapsedTime) {
-		popup.send("Don't touch the Sun :O !!!", 2000, "#1b32b4");
+		popup.send("DON'T TOUCH THE SUN!!!", 2000, "#1b32b4");
 	}
 }

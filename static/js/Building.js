@@ -26,7 +26,8 @@ class Building extends BasicEntity {
   mouseClick(event, elapsedTime) {
     return true;
   }
-  update(elapsedTime, delta) {}
+  update(elapsedTime, delta) {
+  }
   static get costMineral() {
     return 10;
   }
