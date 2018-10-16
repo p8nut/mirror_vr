@@ -41,7 +41,7 @@ class Farm extends Building {
   }
   update(elapsedTime, delta) {
     if (this.isHarvestable(elapsedTime)) this.iconModel.visible = true;
-    else this.iconModel.visible = false;
+		else this.iconModel.visible = false;
   }
   static get costMineral() {
     return 10;
