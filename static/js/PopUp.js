@@ -5,10 +5,11 @@ class PopUp {
       this.close();
     };
   }
-  send(text, time = 3000) {
+  send(text, time = 3000, color = "#3ab41b") {
     if (this.timeout) clearTimeout(this.timeout);
     this.msgbox.innerHTML = text;
     this.msgbox.style.display = "block";
+    this.msgbox.style.backgroundColor = color;
     this.animatePopUp(time);
   }
   animatePopUp(time) {
