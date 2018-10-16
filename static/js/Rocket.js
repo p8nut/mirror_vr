@@ -11,23 +11,34 @@ class Rocket extends Building {
     this.model.scale.set(0.002, 0.002, 0.002);
     this.model.rotation.y = Math.PI;
     this.add(this.model);
-
+    this.isLaunched = false;
     this.buildingDelay = 5000;
     this.maxGain = 15;
     this.lastHarvest = 0;
+    this.speedValue = 0;
+    this.planet = univers;
+    this.popuped = false;
 
-    univers.main_base.population += 30;
   }
   isLaunchable() {
     return this.univers.main_base.gas >= Rocket.costGas;
   }
   update() {
-    if (this.isLaunchable()); //popup.send("Rocket is ready for launch");
+    if (this.isLaunchable() && this.popuped == false) {
+      popup.send("Rocket is ready for takeoff !");
+      this.popuped = true;
+    }
+    if (this.isLaunched) {
+      this.model.position.x += this.speedValue;
+      this.speedValue += 0.0001;
+      this.lookAt(this.planet.position);
+    }
   }
   mouseClick(event, elapsedTime) {
-    if (this.univers.main_base.gas >= Rocket.costGas)
+    if (this.isLaunchable()) {
       this.univers.main_base.gas -= Rocket.costGas;
-    // launch Rocket
+      this.isLaunched = true;
+    }
   }
   static get costMineral() {
     return 200;

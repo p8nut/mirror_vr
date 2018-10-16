@@ -53,7 +53,7 @@ class Univers extends THREE.Scene{
     }
     
     update(elapsedTime, delta) {
-	for (let i = 0; i < this.children.length; ++i) {
+		for (let i = 0; i < this.children.length; ++i) {
 	    if(this.children[i].update) {
 		this.children[i].update(elapsedTime, delta);
 	    }
@@ -87,6 +87,6 @@ class Univers extends THREE.Scene{
 	
 	world.raycaster.setFromCamera(m, world.camera);
 	let intersects = world.raycaster.intersectObjects( world.children, true );
-        return intersects;
+    return intersects;
   }
 }

@@ -3,10 +3,10 @@ class PopUp {
     this.msgbox = document.getElementById("msgbox");
     //this.msgbox.onclick = ()=>{this.close()};
   }
-  send(text) {
+  send(text, time) {
     this.msgbox.innerHTML = text;
     this.msgbox.style.display = "block";
-    this.animatePopUp();
+    this.animatePopUp(time);
   }
   animatePopUp() {
     var pos = -250;

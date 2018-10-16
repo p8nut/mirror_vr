@@ -51,7 +51,7 @@ class IHM {
     build.add(options, "add_mineral_factory").name("Mineral factory <span class=\"resCost\">" + MineralFactory.costMineral + " <img class=\"LogoIhm\" src=\"./objects/Logo/Rock.png\"></span>");
     build.add(options, "add_gas_factory").name("Gas factory <span class=\"resCost\">" + GasFactory.costMineral + " <img class=\"LogoIhm\" src=\"./objects/Logo/Rock.png\"></span>");
     build.add(options, "add_farm").name("Farm <span class=\"resCost\">" + Farm.costMineral + " <img class=\"LogoIhm\" src=\"./objects/Logo/Rock.png\"></span>");
-    build.add(options, "add_rocket").name("Rocket <span class=\"resCost\">" + Rocket.costMineral + " <img class=\"LogoIhm\" src=\"./objects/Logo/Gas.png\"></span>");
+    build.add(options, "add_rocket").name("Rocket <span class=\"resCost\">" + Rocket.costMineral + " <img class=\"LogoIhm\" src=\"./objects/Logo/Rock.png\"></span>");
     build.open();
 
     var opt = this.ihm.addFolder("Options");

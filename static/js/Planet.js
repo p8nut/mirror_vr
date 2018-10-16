@@ -18,6 +18,7 @@ class Planet extends BasicEntity {
 				polygonOffsetFactor: 0
 			})
 		);
+		this.uni = univers;
 		this.add(packaging);
 		Planet.createLayers(this, size);
 		Planet.addResourcesAndBuilding(this);
@@ -117,7 +118,7 @@ class Planet extends BasicEntity {
 				popup.send("Mineral factory must be placed on rock formation")
 				return (true)
 			}
-			if (buildingType == MineralFactory) {
+			if (buildingType == GasFactory) {
 				popup.send("Gas factory must be placed on gas geyser")
 				return (true)
 			}

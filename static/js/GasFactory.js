@@ -27,8 +27,6 @@ class GasFactory extends Building {
     this.maxGain = 10;
     this.lastHarvest = 0;
     this.harvestCooldown = 3000;
-
-    univers.main_base.population += 10;
   }
   
   mouseClick(event, elapsedTime) {
