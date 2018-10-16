@@ -6,7 +6,7 @@ assetManager.wait().then(function() {
 
   bindCamera();
   bindEventListeners();
-  const fpsController = new FpsController(30, function(e){
+  const fpsController = new FpsController(60, function(e){
       mirrorVR.update()
   });
   fpsController.start();

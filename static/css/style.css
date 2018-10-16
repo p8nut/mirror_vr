@@ -10,7 +10,7 @@ body {
 /* BEGIN IHM */
 #stat {
   position: relative;
-  float: left;
+	float: left;
 }
 
 #ihm {
@@ -90,7 +90,7 @@ body {
 /* BEGIN PopUp */
 .msgbox {
   padding: 20px;
-  background-color: #faa424;
+	background-color: #3ab41b;
   color: white;
   width: 20%;
   margin-top: 15%;
