@@ -11,7 +11,7 @@ class Building extends BasicEntity {
     return this.lastHarvest + this.harvestCooldown < now && this.isFactory == true;
   }
 
-  buildFactory(meshName){
+  buildFactory(meshName, elapsedTime){
     this.isFactory = true;
     if (this.model)
       this.remove(this.model)
@@ -22,7 +22,8 @@ class Building extends BasicEntity {
     this.model.rotation.y = Math.PI;
     this.univers.main_base.minerals -= buildingType.costMineral;
     buildingType = null;
-    this.univers.main_base.population += 10;
+    this.lastHarvest = elapsedTime;
+    this.univers.main_base.population += 1;
     this.add(this.model);
   }
 

@@ -43,7 +43,8 @@ class MainBase extends Building {
       this.lastEat = elapsedTime;
     }
     if (this.univers.main_base.population == 0 && !this.gameOver) {
-      popup.send("Your population starved to death!", 10000, "#e02416");
+      popup.send("Your population starved to death!", 10000, "#e02416", "big");
+      popup.reload();
       this.gameOver = true;
     }
   }

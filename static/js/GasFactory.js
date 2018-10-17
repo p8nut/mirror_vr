@@ -30,10 +30,12 @@ class GasFactory extends Building {
       size: 15,
       sizeRandomness: 1,
     };
+    
     this.spawnerOptions = {
       spawnRate: 1000,
       timeScale: 0.000001
     };
+
     this.iconModel = assetManager.getObject("GasIcon").clone();
     this.iconModel.scale.set(0.002, 0.002, 0.002);
     this.iconModel.rotation.y = Math.PI;
@@ -42,7 +44,7 @@ class GasFactory extends Building {
     this.isFactory = false;
     this.maxGain = 10;
     this.lastHarvest = 0;
-    this.harvestCooldown = 3000;
+    this.harvestCooldown = 6000;
   }
   
   mouseClick(event, elapsedTime) {
@@ -52,7 +54,7 @@ class GasFactory extends Building {
     } else if (this.isFactory == false &&
       buildingType == GasFactory &&
       this.univers.main_base.minerals >= buildingType.costMineral) {
-        super.buildFactory("GasFactory");
+        super.buildFactory("GasFactory", elapsedTime);
     }
   }
   update(elapsedTime, delta) {
