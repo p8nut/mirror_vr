@@ -8,7 +8,7 @@ var popup = PopUp.getInstance();
 class Sun extends BasicEntity {
   constructor(univers) {
     super(univers, new THREE.CubeGeometry(1000, 1000, 1000));
-    this.add(new THREE.PointLight(0xf0f0f0, 10, 100000));
+    this.add(new THREE.PointLight(0xf0f0f0, 10, 10000));
     
     this.textureLoader = new THREE.TextureLoader();
     this.textureFlare0 = assetManager.getTexture("flare0");
