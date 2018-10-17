@@ -19,6 +19,19 @@ body {
   margin-right: 10px;
 }
 
+.dg .c .slider-fg {
+	background: #c8c8c8!important;
+}
+
+.dg .c .slider:hover .slider-fg {
+	background: #c8c8c8!important;
+}
+
+.dg .cr.number input[type=text] {
+	color: #c8c8c8!important;
+	text-align: center;
+}
+
 .dg .cr.function:hover, .dg .cr.boolean:hover{
   background-color: #555555!important;
 }

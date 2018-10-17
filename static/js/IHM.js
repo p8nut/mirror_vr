@@ -73,6 +73,6 @@ class IHM {
 	  var time = 300 - (elapsedTime / 1000);
 	  if (parseInt(time) > 0)
 		  timerbox.innerHTML = "<br>Comet incoming!<br>" + parseInt(time / 60) + ":" + parseInt(time % 60 / 10) + parseInt(time % 60 % 10) + "<br><br>";
-	else   timerbox.innerHTML = "<br>Comet incoming!<br>0:00<br>";
+	else   timerbox.innerHTML = "<br>Comet incoming!<br>0:00<br><br>";
   }
 }
