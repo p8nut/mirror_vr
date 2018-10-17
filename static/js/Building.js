@@ -13,7 +13,10 @@ class Building extends BasicEntity {
 
   buildFactory(meshName){
     this.isFactory = true;
-    this.remove(this.model)
+    if (this.model)
+      this.remove(this.model)
+    else if (this.particleSystem)
+      this.remove(this.particleSystem);
     this.model = assetManager.getObject(meshName).clone();
     this.model.scale.set(0.002, 0.002, 0.002);
     this.model.rotation.y = Math.PI;

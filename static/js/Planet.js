@@ -43,7 +43,7 @@ class Planet extends BasicEntity {
       if (v % 3) {
         resource = new MineralFactory(planet);
       } else {
-        resource = new GasResource(planet);
+        resource = new GasFactory(planet);
       }
       v++;
       resource.position.copy(vertice);
