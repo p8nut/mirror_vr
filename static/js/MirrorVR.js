@@ -61,7 +61,6 @@ class MirrorVR {
   }
 
   mouseDoubleClick(event) {
-    meteor(this.univers);
     event.preventDefault();
   }
 }
