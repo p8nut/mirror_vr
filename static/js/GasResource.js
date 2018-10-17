@@ -29,9 +29,6 @@ class GasResource extends BasicEntity {
     this.tick += deltaTime;
     if (this.tick < 0) tick = 0;
     if (deltaTime > 0) {
-      this.options.position.x = 0;//Math.sin(tick * spawnerOptions.horizontalSpeed) * 20;
-      this.options.position.y = 0;//Math.sin(tick * spawnerOptions.verticalSpeed) * 10;
-      this.options.position.z = 0;//Math.sin(tick * spawnerOptions.horizontalSpeed + spawnerOptions.verticalSpeed) * 5;
       for (var x = 0; x < this.spawnerOptions.spawnRate * deltaTime; x++) {
         this.particleSystem.spawnParticle(this.options);
       }
