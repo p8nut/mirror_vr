@@ -23,7 +23,6 @@ class Farm extends Building {
     this.iconModel.position.z = -0.2;
     this.add(this.iconModel);
 
-    this.buildingDelay = 1000;
     this.maxGain = 15;
     this.lastHarvest = 0;
     this.harvestCooldown = 4000;

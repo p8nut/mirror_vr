@@ -10,18 +10,16 @@
 
 <body>
 
-  <div class="msgbox" id="msgbox" style="display: none;"></div>
+	<div class="msgbox" id="msgbox" style="display: none;"></div>
 	<div class="timer" id="timerbox"></div>
-	<div id="container2"  style="position: absolute;bottom: 0%;"></div>
-  
+	<div id="container2" style="position: absolute;bottom: 0%;"></div>
+
 	<canvas id="canvas"></canvas>
 
 	<script src="modules/screenfull/dist/screenfull.js"></script>
 	<script src="modules/lodash/lodash.min.js"></script>
 	<script src="modules/dat.gui/build/dat.gui.min.js"></script>
 	<script src="modules/three/build/three.min.js"></script>
-
-	
 
 	<script src="three-utils/Lensflare.js"></script>
 	<script src="three-utils/GPUParticleSystem.js"></script>
@@ -30,10 +28,15 @@
 	<script src="three-utils/loaders/OBJLoader.js"></script>
 	<script src="three-utils/stats.min.js"></script>
 
-
+	<script src="js/physi.js"></script>
+	<script>
+	Physijs.scripts.worker = '/js/physijs_worker.js';
+	Physijs.scripts.ammo = '/js/ammo.js';
+	</script>
 	<script src="js/FpsController.js"></script>
 	<script src="js/PopUp.js"></script>
 	<script src="js/AssetManager.js"></script>
+	<script src="js/Meteor.js"></script>
 	<script src="js/BasicEntity.js"></script>
 	<script src="js/Building.js"></script>
 	<script src="js/MainBase.js"></script>

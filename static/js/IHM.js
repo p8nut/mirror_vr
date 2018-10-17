@@ -65,7 +65,8 @@ class IHM {
   }
   handle_zoom() {
     var ratio = this.options.zoom / 100 + 0.7;
-    this.univers.planet.scale.set(ratio, ratio, ratio);
+		this.univers.planet.scale.set(ratio, ratio, ratio);
+		this.univers.planet.hitbox.scale.set(ratio, ratio, ratio);
   }
   handle_timer(elapsedTime) {
 	  var timerbox = document.getElementById("timerbox");

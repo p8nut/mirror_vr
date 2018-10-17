@@ -1,13 +1,13 @@
+
 var assetManager = AssetManager.getInstance();
 
 assetManager.loadTexture("flare0", "objects/Lensflares/lensflare0.png");
 assetManager.loadTexture("flare3", "objects/Lensflares/lensflare3.png");
+var popup = PopUp.getInstance();
 
 class Sun extends BasicEntity {
   constructor(univers) {
     super(univers, new THREE.CubeGeometry(1000, 1000, 1000));
-    // sun.position.y = - 700000;
-    // sun.visible = false;
     this.add(new THREE.PointLight(0xf0f0f0, 10, 100000));
     
     this.textureLoader = new THREE.TextureLoader();
@@ -16,7 +16,7 @@ class Sun extends BasicEntity {
 
     var light = new THREE.PointLight( 0xffffff, 1.5, 2000 );
     light.color.setHSL( 0.08, 0.8, 0.5 );
-    light.position.set( 0, 0, -1000 );
+    light.position.set( 0, 0, 0 );
     this.add( light );
 
     var lensflare = new THREE.Lensflare();
@@ -26,8 +26,8 @@ class Sun extends BasicEntity {
     lensflare.addElement( new THREE.LensflareElement( this.textureFlare3, 120, 0.9 ) );
     lensflare.addElement( new THREE.LensflareElement( this.textureFlare3, 70, 1 ) );
     light.add( lensflare );
-  }
-  mouseClick(event, elapsedTime) {
-    popup.send("IT IS WAY TOO HOT, DO NOT CLICK THE SUN !!");
-  }
+	}
+	mouseClick(event, elapsedTime) {
+		popup.send("DON'T TOUCH THE SUN!!!", 2000, "#1b32b4");
+	}
 }

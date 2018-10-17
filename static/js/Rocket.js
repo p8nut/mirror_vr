@@ -11,8 +11,8 @@ class Rocket extends Building {
     this.model.scale.set(0.002, 0.002, 0.002);
     this.model.rotation.y = Math.PI;
     this.add(this.model);
-    this.isLaunched = false;
-    this.buildingDelay = 5000;
+		
+		this.isLaunched = false;
     this.maxGain = 15;
     this.lastHarvest = 0;
     this.speedValue = 0;

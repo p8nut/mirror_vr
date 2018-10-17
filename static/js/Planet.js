@@ -5,25 +5,30 @@ var popup = PopUp.getInstance();
 var buildingType = null;
 
 class Planet extends BasicEntity {
-
-	constructor(univers) {
-		const size = 1;
-		super(univers, new THREE.IcosahedronGeometry(size, 4));
-		const packaging = this.packaging = new THREE.Mesh(
-			Planet.createLayerMesh(size),
-			new THREE.MeshLambertMaterial({
-				map: assetManager.getTexture("venus"),
-				color: 0xff8800,
-				side: THREE.DoubleSide,
-				polygonOffset: true,
-				polygonOffsetFactor: 0
-			})
+  constructor(univers) {
+    const size = 1;
+    super(univers, new THREE.IcosahedronGeometry(size, 4));
+    this.hitbox = new Physijs.SphereMesh(
+      new THREE.SphereGeometry(0.9),
+			new THREE.MeshPhongMaterial({ color: 0xff0000, visible: false }),
 		);
-		this.uni = univers;
-		this.add(packaging);
-		Planet.createLayers(this, size);
-		Planet.addResourcesAndBuilding(this);
-	}
+		this.hitbox.position.set(0, 1, 0);
+		univers.add(this.hitbox);
+    const packaging = (this.packaging = new Physijs.SphereMesh(
+      Planet.createLayerMesh(size),
+      new THREE.MeshLambertMaterial({
+        map: assetManager.getTexture("venus"),
+        color: 0xff8800,
+        side: THREE.DoubleSide,
+        polygonOffset: true,
+        polygonOffsetFactor: 0
+      })
+    ));
+    this.uni = univers;
+    this.add(packaging);
+    Planet.createLayers(this, size);
+    Planet.addResourcesAndBuilding(this);
+  }
 
   static addResourcesAndBuilding(planet) {
     let vertices = _.sampleSize(planet.geometry.vertices, 20);
@@ -98,37 +103,37 @@ class Planet extends BasicEntity {
     super.update(elapsedTime, delta);
   }
 
-	mouseClick(intersect, elapsedTime) {
-		let vertices = this.geometry.vertices;
-		let local_intersect = this.worldToLocal(intersect.point);
-		let vertice = null;
-		let min;
-		for (let i = 0; i < vertices.length; i++) {
-			let distance = vertices[i].distanceTo(local_intersect);
-			if (vertice === null || distance < min) {
-				min = distance;
-				vertice = vertices[i];
-			}
-		}
-		if (buildingType != null) {
-			if (buildingType.costMineral > this.main_base.minerals) {
-				popup.send("Insufficient resources");
-				return (true);
-			}
-			if (buildingType == MineralFactory) {
-				popup.send("Mineral factory must be placed on rock formation")
-				return (true)
-			}
-			if (buildingType == GasFactory) {
-				popup.send("Gas factory must be placed on gas geyser")
-				return (true)
-			}
-			let building = new buildingType(this);
-			this.main_base.minerals -= buildingType.costMineral;
-			building.position.copy(vertice)
-			building.lookAt(this.position)
-			buildingType = null;
-		}
-		return true;
-	}
+  mouseClick(intersect, elapsedTime) {
+    let vertices = this.geometry.vertices;
+    let local_intersect = this.worldToLocal(intersect.point);
+    let vertice = null;
+    let min;
+    for (let i = 0; i < vertices.length; i++) {
+      let distance = vertices[i].distanceTo(local_intersect);
+      if (vertice === null || distance < min) {
+        min = distance;
+        vertice = vertices[i];
+      }
+    }
+    if (buildingType != null) {
+      if (buildingType.costMineral > this.main_base.minerals) {
+        popup.send("Insufficient resources");
+        return true;
+      }
+      if (buildingType == MineralFactory) {
+        popup.send("Mineral factory must be placed on rock formation");
+        return true;
+      }
+      if (buildingType == GasFactory) {
+        popup.send("Gas factory must be placed on gas geyser");
+        return true;
+      }
+      let building = new buildingType(this);
+      this.main_base.minerals -= buildingType.costMineral;
+      building.position.copy(vertice);
+      building.lookAt(this.position);
+      buildingType = null;
+    }
+    return true;
+  }
 }
