@@ -9,7 +9,7 @@ class Planet extends BasicEntity {
     const size = 1;
     super(univers, new THREE.IcosahedronGeometry(size, 4));
     this.hitbox = new Physijs.SphereMesh(
-      new THREE.SphereGeometry(0.9),
+      new THREE.SphereGeometry(0.8),
 			new THREE.MeshPhongMaterial({ color: 0xff0000, visible: false }),
 		);
 		this.hitbox.position.set(0, 1, 0);
