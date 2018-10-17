@@ -4,6 +4,8 @@ assetManager.loadObject(
   "./objects/Buildings/Rocket/Rocket.obj",
   "./objects/Buildings/Rocket/Rocket.mtl"
 );
+var popup = PopUp.getInstance();
+
 class Rocket extends Building {
   constructor(univers) {
     super(univers, new THREE.BoxGeometry(0.05, 0.05, 0.05));
@@ -33,6 +35,11 @@ class Rocket extends Building {
     if (this.isLaunchable()) {
       this.univers.main_base.gas -= Rocket.costGas;
       this.isLaunched = true;
+      popup.send("You saved the population in time !", 10000, "#00FF00", "big");
+      popup.reload();
+    }
+    else {
+      popup.send("You need 300 gas to launch a rocket");
     }
   }
   static get costMineral() {

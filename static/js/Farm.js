@@ -23,11 +23,12 @@ class Farm extends Building {
     this.iconModel.position.z = -0.2;
     this.add(this.iconModel);
 
-    this.maxGain = 15;
+    this.maxGain = 100;
     this.lastHarvest = 0;
-    this.harvestCooldown = 4000;
+    this.harvestCooldown = 9000;
 
-    univers.main_base.population += 10;
+    univers.main_base.population += 2;
+    univers.main_base.food -= 80;
   }
   isHarvestable(now) {
     return this.lastHarvest + this.harvestCooldown < now;

@@ -32,7 +32,7 @@ class MineralFactory extends Building {
 		this.isFactory = false;
     this.maxGain = 30;
     this.lastHarvest = 0;
-    this.harvestCooldown = 5000;
+    this.harvestCooldown = 9000;
   }
   
   mouseClick(event, elapsedTime) {
@@ -42,7 +42,7 @@ class MineralFactory extends Building {
     } else if (this.isFactory == false &&
       buildingType == MineralFactory &&
       this.univers.main_base.minerals >= buildingType.costMineral) {
-        super.buildFactory("MineralFactory");
+        super.buildFactory("MineralFactory", elapsedTime);
     }
   }
   update(elapsedTime, delta) {

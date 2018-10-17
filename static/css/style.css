@@ -110,6 +110,16 @@ body {
   text-align: center;
   position: absolute;
 }
+
+.GameStatus {
+  padding: 20px;
+	background-color: #3ab41b;
+  color: white;
+  width: 20%;
+  margin-top: 15%;
+  float: left;
+  position: absolute;
+}
 /* END PopUp */
 
 /* BEGIN Timer */
