@@ -50,7 +50,7 @@ class Univers extends Physijs.Scene {
   createNaturalDisaster() {
     setTimeout(meteor, 300000, this, true);
     setTimeout(function() {
-      popup.send("GAME OVER!", 5000, "#e02416");
+      popup.gameOver(0);
     }, 300000);
 
     var timer = this.getRandomInt(30, 270) * 1000;

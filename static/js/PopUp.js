@@ -5,22 +5,19 @@ class PopUp {
       this.close();
     };
   }
-  send(text, time = 3000, color = "#3ab41b", size = "normal") {
+  send(text, time = 3000, color = "#3ab41b") {
     if (this.timeout) clearTimeout(this.timeout);
     this.msgbox.innerHTML = text;
     this.msgbox.style.display = "block";
     this.msgbox.style.backgroundColor = color;
-    this.animatePopUp(time, size);
+    this.animatePopUp(time);
   }
-  animatePopUp(time, size) {
+  animatePopUp(time) {
     var pos = -250;
     this.msgbox.style.left = pos + "px";
     var id = setInterval(frame, 4);
-    var padding = 0;
-    if (size == "big")
-      padding = 750;
     function frame() {
-      if (pos == 0 + padding) {
+      if (pos == 0) {
         clearInterval(id);
       } else {
         pos += 2;
@@ -28,8 +25,10 @@ class PopUp {
       }
     }
     this.timeout = setTimeout(this.close, time);
-  }
-  reload() {
+	}
+  gameOver(time) {
+		setTimeout(function() {popup.send("GAME OVER! Restarting soon...", 5000, "#e02416");}, time);
+		setTimeout(function() {location.reload();}, 5000);
   }
   close() {
     if (this.timeout) clearTimeout(this.timeout);
