@@ -18,7 +18,7 @@ function meteor(univers, bigMeteor = false) {
 
   var targetPosition = new THREE.Vector3();
   targetPosition.x = univers.planet.position.x;
-  targetPosition.y = Math.random() * (1.9 - 0.1) + 0.1;
+  targetPosition.y = Math.random() * (0.9 - 0.1) + 0.1;
   targetPosition.z = univers.planet.position.z;
   var diff = rock.position.clone().sub(targetPosition);
   bvel = diff.normalize().negate();
