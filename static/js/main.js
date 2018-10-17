@@ -46,7 +46,7 @@ assetManager.wait().then(function() {
       mirrorVR.controller.position.set(p.x, p.y, p.z);
       mirrorVR.controller.quaternion.set(p.qx, p.qy, p.qz, p.qw);
       // Quick fix for camera orientation in MirrorVR camera.lookAt
-      mirrorVR.camera.rotation.set(-Math.PI / 2, 0, 0);
+	mirrorVR.camera.rotation.set(-Math.PI / 2, Math.PI, 0);
     };
   }
 });
