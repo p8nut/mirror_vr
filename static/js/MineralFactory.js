@@ -33,10 +33,6 @@ class MineralFactory extends Building {
     this.maxGain = 30;
     this.lastHarvest = 0;
     this.harvestCooldown = 5000;
-
-
-    this.univers.main_base.gas += 400;
-    this.univers.main_base.minerals += 400;
   }
   
   mouseClick(event, elapsedTime) {

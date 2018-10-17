@@ -14,7 +14,7 @@ class MainBase extends Building {
     this.model.rotation.y = Math.PI;
     this.add(this.model);
 
-    var food = (this.food = 20);
+    var food = (this.food = 100);
     var gas = (this.gas = 10);
     var minerals = (this.minerals = 10);
     var population = (this.population = 10);
