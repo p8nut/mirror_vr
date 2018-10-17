@@ -1,19 +1,19 @@
-
 var assetManager = AssetManager.getInstance();
 assetManager.loadCubeTexture("space", "objects/Textures/space.png");
+
+var popup = PopUp.getInstance();
 
 class Univers extends Physijs.Scene {
   constructor(canvas) {
     super();
 
-		this.background = new THREE.Color("#000000");
-		this.setGravity(new THREE.Vector3(0, 0, 0))
+    this.background = new THREE.Color("#000000");
+    this.setGravity(new THREE.Vector3(0, 0, 0));
     this.add(new THREE.AmbientLight(0xffffff, 0.05));
 
     this.canvas = canvas;
     this.raycaster = new THREE.Raycaster();
 
-    
     //////////////// BEGIN PLANET //////////////
     const planet = (this.planet = new Planet(this));
     planet.position.set(0, 1, 0);
@@ -37,7 +37,28 @@ class Univers extends Physijs.Scene {
     camera.lookAt(this.planet.position);
     //////////////// END CAMERA ////////////////
 
-  this.background = assetManager.getCubeTexture("space");
+    this.background = assetManager.getCubeTexture("space");
+    this.createNaturalDisaster();
+  }
+
+  getRandomInt(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min)) + min;
+  }
+
+  createNaturalDisaster() {
+    setTimeout(meteor, 300000, this, true);
+    setTimeout(function() {
+      popup.send("GAME OVER!", 5000, "#e02416");
+    }, 300000);
+
+    var timer = this.getRandomInt(30, 270) * 1000;
+    var msgTimer = timer - 10000;
+    setTimeout(meteor, timer, this);
+    setTimeout(function() {
+      popup.send("Small comet incoming! Destory it!", 5000, "#e02416");
+    }, msgTimer);
   }
 
   static buildCamera(canvas) {
@@ -69,8 +90,8 @@ class Univers extends Physijs.Scene {
   }
 
   render(renderer) {
-		renderer.render(this, this.camera);
-		this.simulate();
+    renderer.render(this, this.camera);
+    this.simulate();
   }
 
   mouseMove() {}
