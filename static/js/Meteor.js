@@ -1,31 +1,32 @@
 var assetManager = AssetManager.getInstance();
 assetManager.loadTexture("meteor", "/textures/moon.jpg");
 
-function meteor(univers) {
-  var ico = new THREE.SphereGeometry(0.02);
+function meteor(univers, bigMeteor = false) {
+  var size = 0.02;
+  if (bigMeteor) size = 0.5;
+  var ico = new THREE.SphereGeometry(size);
   var material = new THREE.MeshLambertMaterial({
-        map: assetManager.getTexture("meteor"),
+    map: assetManager.getTexture("meteor")
   });
   rock = new Physijs.SphereMesh(ico, material);
   rock.position.x = Math.random() * 2 - 1;
   rock.position.y = Math.random() * 2 - 1;
   rock.position.z = Math.random() * 2 - 1;
   rock.position.normalize();
-  rock.position.multiplyScalar(10); // Rayon d'apparition des comètes
+  rock.position.multiplyScalar(10);
   univers.add(rock);
 
-	// Assume `rock` is the bullet, `univers.planet` is the "planet" body.
-	var targetPosition;
-	targetPosition.x 
-  var diff = rock.position.clone().sub(univers.planet.position);
+  var targetPosition = new THREE.Vector3();
+  targetPosition.x = univers.planet.position.x;
+  targetPosition.y = Math.random() * (1.9 - 0.1) + 0.1;
+  targetPosition.z = univers.planet.position.z;
+  var diff = rock.position.clone().sub(targetPosition);
   bvel = diff.normalize().negate();
-  // Force de gravité
-  var grav = 1;
-  bvel.multiplyScalar(grav);
-  // Average it out
+
+  var gravity = 0.5;
+  bvel.multiplyScalar(gravity);
   bvel.add(rock.getLinearVelocity()).multiplyScalar(2);
   rock.setLinearVelocity(bvel);
-  // Détection des collisions
 
   rock.addEventListener("collision", function(
     other_object,
@@ -35,8 +36,6 @@ function meteor(univers) {
   ) {
     if (other_object == univers.planet.hitbox) {
       univers.remove(this);
-      //parts.push(new ExplodeAnimation(this.position.x, this.position.y, this.position.z))
     }
   });
-  // `this` has collided with `other_object` with an impact speed of `relative_velocity` and a rotational force of `relative_rotation` and at normal `contact_normal`
 }
