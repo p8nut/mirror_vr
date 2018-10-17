@@ -1,8 +1,9 @@
-class Univers extends THREE.Scene {
+class Univers extends Physijs.Scene {
   constructor(canvas) {
     super();
 
-    this.background = new THREE.Color("#000000");
+		this.background = new THREE.Color("#000000");
+		this.setGravity(new THREE.Vector3(0, 0, 0))
     this.add(new THREE.AmbientLight(0xffffff, 0.05));
 
     this.canvas = canvas;
@@ -62,7 +63,8 @@ class Univers extends THREE.Scene {
   }
 
   render(renderer) {
-    renderer.render(this, this.camera);
+		renderer.render(this, this.camera);
+		this.simulate();
   }
 
   mouseMove() {}
