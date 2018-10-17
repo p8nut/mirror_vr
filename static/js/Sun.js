@@ -1,3 +1,8 @@
+
+var assetManager = AssetManager.getInstance();
+
+assetManager.loadTexture("flare0", "objects/Lensflares/lensflare0.png");
+assetManager.loadTexture("flare3", "objects/Lensflares/lensflare3.png");
 var popup = PopUp.getInstance();
 
 class Sun extends BasicEntity {
@@ -6,8 +11,8 @@ class Sun extends BasicEntity {
     this.add(new THREE.PointLight(0xf0f0f0, 10, 100000));
     
     this.textureLoader = new THREE.TextureLoader();
-    this.textureFlare0 = this.textureLoader.load( 'objects/Lensflares/lensflare0.png' );
-    this.textureFlare3 = this.textureLoader.load( 'objects/Lensflares/lensflare3.png' );
+    this.textureFlare0 = assetManager.getTexture("flare0");
+    this.textureFlare3 = assetManager.getTexture("flare3");;
 
     var light = new THREE.PointLight( 0xffffff, 1.5, 2000 );
     light.color.setHSL( 0.08, 0.8, 0.5 );

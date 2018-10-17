@@ -3,7 +3,34 @@ class AssetManager{
 	var promises = this.promises = new Array();
 	var objects = this.objects = new Array();
 	var textures = this.textures = new Array();
-    }
+	var cubes = this.cubes = new Array();
+	}
+	
+	loadCubeTexture(name, texture_path) {
+	if (_.find(this.cubes, o => o.name === name))
+		throw "already loaded with this name";
+	const promises = this.promises;
+	var cubes = this.cubes;
+
+	let promise = AssetManager._loadCubeTexture(texture_path);
+	promise.then(function(cube){
+	cubes.push({name:name, cube:cube});
+	});
+	promises.push(promise);
+	}
+
+	static _loadCubeTexture(texture_path) {
+		return new Promise(function(accept, reject) {
+			var txtLoader = new THREE.CubeTextureLoader();
+			txtLoader.load([texture_path, texture_path, 
+				texture_path, texture_path, 
+				texture_path, texture_path],
+							t => accept(t),
+							() => {},
+			   				e => reject(e))
+		})
+	}
+
     loadTexture(name, texture_path) {
 	if (_.find(this.textures, o => o.name === name))
 	    throw "already loaded with this name";
@@ -16,7 +43,7 @@ class AssetManager{
 	    textures.push({name:name, texture:texture});
 	});
 	promises.push(promise);
-    }
+	}
     
     static _loadTexture(texture_path) {
 	return new Promise(function(accept, reject) {
@@ -26,7 +53,7 @@ class AssetManager{
 			   () => {},
 			   e => reject(e))
 	})
-    }
+	}
 
     loadObject(name, obj_path, mtl_path) {
 	if (_.find(this.objects, o => o.name === name))
@@ -74,7 +101,15 @@ class AssetManager{
 	    return elem.texture;
 	}
 	return null;
-    }
+	}
+	
+	getCubeTexture(name) {
+		let elem = _.find(this.cubes, o => o.name === name);
+		if (elem) {
+			return elem.cube;
+		}
+		return null;
+	}
 
     wait() {
 	return Promise.all(this.promises);

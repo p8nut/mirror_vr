@@ -1,3 +1,7 @@
+
+var assetManager = AssetManager.getInstance();
+assetManager.loadCubeTexture("space", "objects/Textures/space.png");
+
 class Univers extends Physijs.Scene {
   constructor(canvas) {
     super();
@@ -18,7 +22,7 @@ class Univers extends Physijs.Scene {
 
     //////////////// BEGIN SUN /////////////////
     const sun = (this.sun = new Sun(this));
-    sun.position.x = 80000;
+    sun.position.x = 8000;
 
     this.add(sun);
     //////////////// END SUN ///////////////////
@@ -32,6 +36,8 @@ class Univers extends Physijs.Scene {
     controller.add(camera);
     camera.lookAt(this.planet.position);
     //////////////// END CAMERA ////////////////
+
+  this.background = assetManager.getCubeTexture("space");
   }
 
   static buildCamera(canvas) {
@@ -46,7 +52,7 @@ class Univers extends Physijs.Scene {
       farPlane
     );
   }
-  
+
   resize() {
     const camera = this.camera;
 
