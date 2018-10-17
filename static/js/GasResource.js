@@ -9,19 +9,18 @@ class GasResource extends BasicEntity {
     this.options = {
       position: new THREE.Vector3(0, 0, 0),
       velocity: new THREE.Vector3(0, 0, 0),
-      velocityRandomness: 0,
-      positionRandomness: 0.1,
-      color: 0xffff00,
+      velocityRandomness: 0.05,
+      positionRandomness: 0.02,
+      color: 0xe9d208,
       colorRandomness: 0.2,
       turbulence: 0.1,
-      lifetime: 1,
-      size: 5,
+      lifetime: 3,
+      size: 15,
       sizeRandomness: 1,
-      timeScale: 0.1
     };
     this.spawnerOptions = {
       spawnRate: 1000,
-      timeScale: 0.0001
+      timeScale: 0.000001
     };
   }
   update(elapsedTime, delta) {
@@ -34,8 +33,5 @@ class GasResource extends BasicEntity {
       }
     }
     this.particleSystem.update(this.tick);
-  }
-  mouseClick(event, elapsedTime) {
-    return true;
   }
 }
