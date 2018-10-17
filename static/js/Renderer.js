@@ -18,13 +18,13 @@ class Renderer {
     renderer.setClearColor(0x000000);
     renderer.autoClear = false;
 
-    this.container = document.getElementById("container2");
-    this.stats = new Stats();
-    this.container.appendChild(this.stats.dom);
+    //this.container = document.getElementById("container2");
+    //this.stats = new Stats();
+    //this.container.appendChild(this.stats.dom);
   }
 
   render(scene, camera) {
-    this.stats.update();
+    //this.stats.update();
 
     this.renderer.render(scene, camera);
   }
