@@ -50,7 +50,7 @@ class Univers extends Physijs.Scene {
   createNaturalDisaster() {
     setTimeout(meteor, 300000, this, true);
     setTimeout(function() {
-      popup.gameOver(0);
+      popup.gameOver(false, 0);
     }, 300000);
 
     var timer = this.getRandomInt(30, 270) * 1000;
@@ -116,7 +116,6 @@ class Univers extends Physijs.Scene {
 
     world.raycaster.setFromCamera(m, world.camera);
     let intersects = world.raycaster.intersectObjects(world.children, true);
-
     return intersects;
   }
 }

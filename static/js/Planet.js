@@ -6,10 +6,10 @@ var buildingType = null;
 
 class Planet extends BasicEntity {
   constructor(univers) {
-    const size = 1;
+    const size = 0.6;
     super(univers, new THREE.IcosahedronGeometry(size, 4));
     this.hitbox = new Physijs.SphereMesh(
-      new THREE.SphereGeometry(0.8),
+      new THREE.SphereGeometry(size - 0.2),
 			new THREE.MeshPhongMaterial({ color: 0xff0000, visible: false }),
 		);
 		this.hitbox.position.set(0, 1, 0);
@@ -117,7 +117,7 @@ class Planet extends BasicEntity {
     }
     if (buildingType != null) {
       if (buildingType.costMineral > this.main_base.minerals) {
-        popup.send("Insufficient resources");
+        popup.send("Not enough minerals");
         return true;
       }
       if (buildingType == MineralFactory) {

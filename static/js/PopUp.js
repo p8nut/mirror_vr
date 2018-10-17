@@ -25,10 +25,19 @@ class PopUp {
       }
     }
     this.timeout = setTimeout(this.close, time);
-	}
-  gameOver(time) {
-		setTimeout(function() {popup.send("GAME OVER! Restarting soon...", 5000, "#e02416");}, time);
-		setTimeout(function() {location.reload();}, 5000);
+  }
+  gameOver(win, time) {
+    if (win)
+      setTimeout(function() {
+        popup.send("You saved the colony! Well done! Restarting soon...", 5000, "#e02416");
+      }, time);
+    else
+      setTimeout(function() {
+        popup.send("GAME OVER! Restarting soon...", 5000, "#e02416");
+      }, time);
+    setTimeout(function() {
+      //location.reload();
+    }, 5000 + time);
   }
   close() {
     if (this.timeout) clearTimeout(this.timeout);
