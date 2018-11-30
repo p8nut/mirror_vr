@@ -28,7 +28,6 @@ class Farm extends Building {
     this.harvestCooldown = 9000;
 
     univers.main_base.population += 2;
-    univers.main_base.food -= 80;
   }
   isHarvestable(now) {
     return this.lastHarvest + this.harvestCooldown < now;
